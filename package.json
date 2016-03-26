@@ -1,0 +1,40 @@
+{
+  "name": "reddux",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "semistandard",
+    "build": "webpack --module-bind 'js=babel' src/app.js public/bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffcousins/reddux.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeffcousins/reddux/issues"
+  },
+  "homepage": "https://github.com/jeffcousins/reddux#readme",
+  "devDependencies": {
+    "babel-core": "^6.7.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "chai": "^3.5.0",
+    "json-loader": "^0.5.4",
+    "mocha": "^2.4.5",
+    "semistandard": "^7.0.5",
+    "webpack": "^1.12.14"
+  },
+  "dependencies": {
+    "axios": "^0.9.1",
+    "express": "^4.13.4",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-redux": "^4.4.1",
+    "react-router": "^2.0.1",
+    "redux": "^3.3.1"
+  }
+}
