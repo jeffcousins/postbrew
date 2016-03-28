@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from './Header.jsx';
+import Search from './Search';
 
 const App = () => (
   <div>
-    <Header title='Reddux' color='tomato' />
+    <Search />
   </div>
 );
 
-module.exports = App;
+export default App;
