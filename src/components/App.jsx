@@ -8,14 +8,15 @@ const style = {
 
 const App = (props) => (
   <div style={style}>
-    <TopNav />
+    <TopNav forums={props.forums} />
     <SearchBar />
-    {props.children}
+    {props.children || <h1>reddux</h1>}
   </div>
 );
 
 App.propTypes = {
-  children: React.PropTypes.element
+  children: React.PropTypes.element,
+  forums: React.PropTypes.object
 };
 
 module.exports = App;

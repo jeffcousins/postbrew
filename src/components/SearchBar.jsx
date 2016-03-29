@@ -29,7 +29,7 @@ const Search = React.createClass({
       <div style={style}>
         <input value={this.state.searchQuery} type='text' style={style.input}
           onChange={this.handleSearchEvent} placeholder='Search' />
-        <Link to='/content'>
+        <Link to='/content/javascript'>
           <button style={style.button}>Get Content</button>
         </Link>
       </div>

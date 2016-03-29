@@ -1,15 +1,17 @@
 import React from 'react';
 import PostItem from './PostItem';
-import data from '../../public/data';
 
 const Content = React.createClass({
+  propTypes: {
+    params: React.PropTypes.object
+  },
   render () {
     return (
       <div>
-        <h1>JavaScript</h1>
+        <h1>{this.props.params.title}</h1>
         <hr />
         <h2>Posts:</h2>
-        {data.javascript.posts.map((post) => (
+        {this.props.params.posts.map((post) => (
           <PostItem {...post} key={post._id} />
         ))}
       </div>

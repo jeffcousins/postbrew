@@ -27,8 +27,8 @@ const TopNav = (props) => {
     <div style={styles.container}>
       <div style={{float: 'left'}}>
         <Link to='/' style={styles.link}>home</Link>
-        <Link to='/javascript' style={styles.link} activeStyle={styles.currentLink}>javascript</Link>
-        <Link to='/react' style={styles.link} activeStyle={styles.currentLink}>react</Link>
+        <Link to='/content/javascript' style={styles.link} activeStyle={styles.currentLink}>javascript</Link>
+        <Link to='/content/react' style={styles.link} activeStyle={styles.currentLink}>react</Link>
       </div>
       <div style={{float: 'right'}}>
         <Link style={styles.link} to='/profile'>Profile</Link>
