@@ -17,4 +17,4 @@ const Content = React.createClass({
   }
 });
 
-export default Content;
+module.exports = Content;

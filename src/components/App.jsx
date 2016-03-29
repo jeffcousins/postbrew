@@ -1,10 +1,21 @@
 import React from 'react';
-import Search from './Search';
+import TopNav from './TopNav';
+import SearchBar from './SearchBar';
 
-const App = () => (
-  <div>
-    <Search />
+const style = {
+  'fontFamily': 'helvetica'
+};
+
+const App = (props) => (
+  <div style={style}>
+    <TopNav />
+    <SearchBar />
+    {props.children}
   </div>
 );
 
-export default App;
+App.propTypes = {
+  children: React.PropTypes.element
+};
+
+module.exports = App;
