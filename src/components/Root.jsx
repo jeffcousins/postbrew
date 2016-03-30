@@ -1,16 +1,16 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Router, Route, hashHistory } from 'react-router';
+import { Router, Route, browserHistory } from 'react-router';
 import App from '../components/App';
 import Content from '../components/Content';
 import Thread from '../components/Thread';
 import { store } from '../store/store';
 
-const Reddux = React.createClass({
+const Root = React.createClass({
   render () {
     return (
       <Provider store={store}>
-        <Router history={hashHistory}>
+        <Router history={browserHistory}>
           <Route path='/' component={App} >
             <Route path='/content/:f' component={Content} />
             <Route path='/thread/:id' component={Thread} />
@@ -21,4 +21,4 @@ const Reddux = React.createClass({
   }
 });
 
-export default Reddux;
+export default Root;
