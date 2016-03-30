@@ -37,4 +37,4 @@ const TopNav = (props) => {
   );
 };
 
-module.exports = TopNav;
+export default TopNav;

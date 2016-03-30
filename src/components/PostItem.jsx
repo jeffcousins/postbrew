@@ -16,4 +16,4 @@ PostItem.propTypes = {
   content: string.isRequired
 };
 
-module.exports = PostItem;
+export default PostItem;

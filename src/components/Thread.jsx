@@ -8,4 +8,4 @@ const Thread = React.createClass({
   }
 });
 
-module.exports = Thread;
+export default Thread;

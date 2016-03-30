@@ -19,4 +19,4 @@ App.propTypes = {
   forums: React.PropTypes.object
 };
 
-module.exports = App;
+export default App;

@@ -6,12 +6,15 @@ const Content = React.createClass({
     params: React.PropTypes.object
   },
   render () {
+    const params = this.props.params || {};
+    const { posts, title } = params;
+
     return (
       <div>
-        <h1>{this.props.params.title}</h1>
+        <h1>{title}</h1>
         <hr />
         <h2>Posts:</h2>
-        {this.props.params.posts.map((post) => (
+        {posts.map((post) => (
           <PostItem {...post} key={post._id} />
         ))}
       </div>
@@ -19,4 +22,4 @@ const Content = React.createClass({
   }
 });
 
-module.exports = Content;
+export default Content;

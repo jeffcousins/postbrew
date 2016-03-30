@@ -29,7 +29,7 @@ const Search = React.createClass({
       <div style={style}>
         <input value={this.state.searchQuery} type='text' style={style.input}
           onChange={this.handleSearchEvent} placeholder='Search' />
-        <Link to='/content/javascript'>
+        <Link to={`/content/${this.state.searchQuery}`}>
           <button style={style.button}>Get Content</button>
         </Link>
       </div>
@@ -37,4 +37,4 @@ const Search = React.createClass({
   }
 });
 
-module.exports = Search;
+export default Search;
