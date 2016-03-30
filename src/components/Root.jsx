@@ -1,11 +1,10 @@
 import React from 'react';
-import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, Route, hashHistory } from 'react-router';
-import App from './components/App';
-import Content from './components/Content';
-import Thread from './components/Thread';
-import { store } from './store/store';
+import App from '../components/App';
+import Content from '../components/Content';
+import Thread from '../components/Thread';
+import { store } from '../store/store';
 
 const Reddux = React.createClass({
   render () {
@@ -22,4 +21,4 @@ const Reddux = React.createClass({
   }
 });
 
-render(<Reddux />, document.getElementById('app'));
+export default Reddux;
