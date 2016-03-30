@@ -13,7 +13,8 @@ styles.container = {
 styles.link = {
   padding: '10px',
   color: 'white',
-  fontWeight: 200
+  fontWeight: 200,
+  textDecoration: 'none'
 };
 
 styles.currentLink = {
@@ -26,9 +27,9 @@ const TopNav = (props) => {
   return (
     <div style={styles.container}>
       <div style={{float: 'left'}}>
-        <Link to='/' style={styles.link}>home</Link>
-        <Link to='/content/javascript' style={styles.link} activeStyle={styles.currentLink}>javascript</Link>
-        <Link to='/content/react' style={styles.link} activeStyle={styles.currentLink}>react</Link>
+        <Link to='/' style={styles.link}>[postbrew]</Link>
+        <Link to='/b/javascript' style={styles.link} activeStyle={styles.currentLink}>javascript</Link>
+        <Link to='/b/react' style={styles.link} activeStyle={styles.currentLink}>react</Link>
       </div>
       <div style={{float: 'right'}}>
         <Link style={styles.link} to='/profile'>Profile</Link>

@@ -10,7 +10,7 @@ const App = (props) => (
   <div style={style}>
     <TopNav forums={props.forums} />
     <SearchBar />
-    {props.children || <h1>reddux</h1>}
+    {props.children || <h1>postbrew</h1>}
   </div>
 );
 

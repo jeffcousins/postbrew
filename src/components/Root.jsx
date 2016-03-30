@@ -12,7 +12,7 @@ const Root = React.createClass({
       <Provider store={store}>
         <Router history={browserHistory}>
           <Route path='/' component={App} >
-            <Route path='/content/:f' component={Content} />
+            <Route path='/b/:b' component={Content} />
             <Route path='/thread/:id' component={Thread} />
           </Route>
         </Router>
