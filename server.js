@@ -6,6 +6,10 @@ import { Provider } from 'react-redux';
 import { store } from './src/store/store';
 import _ from 'lodash';
 import fs from 'fs';
+import logger from 'morgan';
+import bodyParser from 'body-parser';
+import { brews, users } from './server/routes/routes';
+require('./database.js');
 
 const PORT = 8080;
 const baseTemplate = fs.readFileSync('./index.html');
@@ -15,6 +19,13 @@ import createRoutes from './src/routes';
 const app = express();
 
 app.use('/public', express.static('./public'));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(logger('dev'));
+
+brews(app);
+users(app);
 
 app.use((req, res) => {
   match({ routes: createRoutes(), location: req.url },
@@ -36,4 +47,6 @@ app.use((req, res) => {
   });
 });
 
-app.listen(PORT, console.log('listening on port ' + PORT));
+app.listen(PORT, () => {
+  console.log('Listening on port ' + PORT + '. . .');
+});
