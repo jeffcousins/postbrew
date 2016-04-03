@@ -1,3 +1,10 @@
 {
-  "extends": ["semistandard", "standard-react"]
+  "extends": ["semistandard", "standard-react"],
+  "rules": {
+    "react/jsx-no-bind": [2, {
+      "ignoreRefs": false,
+      "allowArrowFunctions": true,
+      "allowBind": false
+    }]
+  }
 }
