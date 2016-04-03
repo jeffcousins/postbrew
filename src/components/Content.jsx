@@ -1,5 +1,5 @@
 import React from 'react';
-import PostItem from './PostItem';
+import PostList from './PostList';
 import { connector } from '../store/store';
 
 const Content = React.createClass({
@@ -24,9 +24,7 @@ const Content = React.createClass({
           <h1>{forum.title}</h1>
           <hr />
           <h2>Posts:</h2>
-          {forum.posts.map((post) => (
-            <PostItem {...post} key={post._id} />
-          ))}
+          <PostList forum={forum} />
         </div>
       );
     }

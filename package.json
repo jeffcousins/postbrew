@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "node index.js",
     "test": "mocha --require test/helpers/setup.js",
     "lint": "semistandard",
     "build": "webpack",
