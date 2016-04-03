@@ -2,7 +2,7 @@ import React from 'react';
 import PostList from './PostList';
 import { connector } from '../store/store';
 
-const Content = React.createClass({
+const BrewContent = React.createClass({
   propTypes: {
     params: React.PropTypes.object,
     forums: React.PropTypes.object
@@ -31,4 +31,4 @@ const Content = React.createClass({
   }
 });
 
-export default connector(Content);
+export default connector(BrewContent);
