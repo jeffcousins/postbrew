@@ -44,6 +44,7 @@
     "morgan": "^1.7.0",
     "nyc": "^6.1.1",
     "react-addons-test-utils": "^0.14.7",
+    "redux-logger": "^2.6.1",
     "semistandard": "^7.0.5",
     "webpack": "^1.12.14"
   },
