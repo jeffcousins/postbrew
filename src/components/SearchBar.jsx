@@ -21,17 +21,18 @@ const Search = React.createClass({
     };
   },
   handleSearchEvent (event) {
+    event.preventDefault();
     this.setState({searchQuery: event.target.value});
   },
   render () {
     return (
-      <div style={style}>
+      <form onSubmit={this.handleSearchEvent} style={style}>
         <input value={this.state.searchQuery} type='text' style={style.input}
           onChange={this.handleSearchEvent} placeholder='Search' />
         <Link to={`/b/${this.state.searchQuery}`}>
           <button style={style.button}>Get Content</button>
         </Link>
-      </div>
+      </form>
     );
   }
 });
