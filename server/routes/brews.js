@@ -18,13 +18,13 @@ const brews = (app) => {
 
   app.route('/api/b/:brewId')
     .get((req, res) => {
-      Brew.find({
+      Brew.findOne({
         brewId: req.params.brewId
-      }, function(err, data) {
+      }, function(err, doc) {
         if (err) {
           res.send(err);
         } else {
-          res.send(data);
+          res.send(doc);
         }
       });
     })
