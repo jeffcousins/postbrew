@@ -1,5 +1,5 @@
 {
-  "name": "reddux",
+  "name": "postbrew",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jeffcousins/reddux.git"
+    "url": "git+https://github.com/jeffcousins/postbrew.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jeffcousins/reddux/issues"
+    "url": "https://github.com/jeffcousins/postbrew/issues"
   },
-  "homepage": "https://github.com/jeffcousins/reddux#readme",
+  "homepage": "https://github.com/jeffcousins/postbrew#readme",
   "devDependencies": {
     "babel-core": "^6.7.4",
     "babel-loader": "^6.2.4",
