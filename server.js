@@ -3,12 +3,14 @@ import express from 'express';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import { Provider } from 'react-redux';
-import { store } from './src/store/store';
 import _ from 'lodash';
 import fs from 'fs';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import { brews, users } from './server/routes/routes';
+import configStore from './src/store/configStore';
+const store = configStore();
+
 require('./database.js');
 
 const PORT = 8080;
