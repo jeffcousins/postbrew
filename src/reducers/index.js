@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import posts from './posts';
-import showPost from './showPost';
+import showThread from './showThread';
+import brewContent from './brewContent';
 
 const rootReducer = combineReducers({
-  posts,
-  showPost
+  brewContent,
+  showThread
 });
 
 export default rootReducer;

@@ -1,6 +1,6 @@
 export default function (state = null, action) {
-  switch(action.type) {
-    case: 'SHOW_THREAD':
+  switch (action.type) {
+    case 'SHOW_THREAD':
       return action.post;
   }
 
