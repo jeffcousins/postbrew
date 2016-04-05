@@ -10,17 +10,10 @@ export function showThread (activePost) {
   };
 }
 
-export function fetchBrewContent (brewId) {
+export function fetchBrewContent (brewPath) {
+  const brewId = brewPath.slice(3);
   console.log('FETCH_BREW_CONTENT action fired', brewId);
   const getUrl = `${ROOT_BREW_URL}${brewId}`;
-  // const request = axios.get(getUrl);
-  // console.log('`REQUEST` FROM AXIOS in Actions:');
-  // console.log(request);
-
-  // return {
-  //   type: FETCH_BREW_CONTENT,
-  //   payload: request
-  // };
 
   return function (dispatch) {
     return axios({
@@ -39,6 +32,8 @@ export function fetchBrewContent (brewId) {
 }
 
 export function receivedData (data) {
+  console.log('inside receivedData action creator: data is:');
+  console.log(data);
   return {
     type: 'RECEIVED',
     payload: data

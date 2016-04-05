@@ -3,19 +3,28 @@ import PostList from './PostList';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchBrewContent } from '../actions/index';
-const { object, func } = React.PropTypes;
+const { object, func, string } = React.PropTypes;
 
 const BrewContent = React.createClass({
   propTypes: {
     params: object,
     fetchBrewContent: func,
-    brewContent: object
+    brewContent: object,
+    brewpath: string
   },
   componentWillMount () {
-    console.log('Inside componentWillMount in BrewContent component');
+    this.props.fetchBrewContent(this.props.brewpath);
+  },
+  componentWillReceiveProps (nextProps) {
+    console.log('Inside componentWillReceiveProps in BrewContent component');
     console.log('this.props is:');
     console.log(this.props);
-    this.props.fetchBrewContent(this.props.params.b);
+    console.log('nextProps.brewpath =?? this.props.brewpath:');
+    console.log(nextProps.brewpath + ' ??? ' + this.props.brewpath);
+    if (nextProps.brewpath !== this.props.brewpath) {
+      console.log('inside if statement before fetch?');
+      this.props.fetchBrewContent(nextProps.brewpath);
+    }
   },
   render () {
     console.log('Inside render() in BrewContent component');
@@ -43,7 +52,8 @@ const BrewContent = React.createClass({
 
 function mapStateToProps (state) {
   return {
-    brewContent: state.brewContent
+    brewContent: state.brewContent,
+    brewpath: state.brewContent.pathname
   };
 }
 
