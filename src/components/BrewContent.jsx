@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PostList from './PostList';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchBrewContent } from '../actions/index';
@@ -16,16 +16,6 @@ const BrewContent = React.createClass({
     console.log('this.props is:');
     console.log(this.props);
     this.props.fetchBrewContent(this.props.params.b);
-  },
-  componentDidMount () {
-    console.log('Inside DID MOUNT in BrewContent component');
-    console.log('this.props is:');
-    console.log(this.props);
-  },
-  componentDidReceiveProps () {
-    console.log('Inside DID RECEIVE PROPS in BrewContent component');
-    console.log('this.props is:');
-    console.log(this.props);
   },
   render () {
     console.log('Inside render() in BrewContent component');
@@ -44,8 +34,7 @@ const BrewContent = React.createClass({
           <h1>Title!</h1>
           <hr />
           <h2>Posts:</h2>
-          <p>{this.props.brewContent.description}</p>
-          <p>TODO: render posts here!</p>
+          <PostList />
         </div>
       );
     }

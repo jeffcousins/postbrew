@@ -22,6 +22,10 @@ const brewSchema = mongoose.Schema({
   created: {
     type: String,
     required: true
+  },
+  posts: {
+    type: Array,
+    required: true
   }
 });
 
