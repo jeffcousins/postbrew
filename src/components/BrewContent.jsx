@@ -13,7 +13,13 @@ const BrewContent = React.createClass({
     brewpath: string
   },
   componentWillMount () {
-    this.props.fetchBrewContent(this.props.brewpath);
+/*
+    if (this.props.brewpath) {
+      this.props.fetchBrewContent(this.props.brewpath);
+    } else {
+    }
+*/
+    this.props.fetchBrewContent(this.props.params.b);
   },
   componentWillReceiveProps (nextProps) {
     console.log('Inside componentWillReceiveProps in BrewContent component');
@@ -40,7 +46,8 @@ const BrewContent = React.createClass({
     } else {
       return (
         <div>
-          <h1>Title!</h1>
+          <h1>{this.props.brewContent.title}</h1>
+          <p>{this.props.brewContent.description}</p>
           <hr />
           <h2>Posts:</h2>
           <PostList />

@@ -11,7 +11,13 @@ export function showThread (activePost) {
 }
 
 export function fetchBrewContent (brewPath) {
-  const brewId = brewPath.slice(3);
+  let brewId;
+  if (brewPath[0] === '/') {
+    brewId = brewPath.slice(3);
+  } else {
+    brewId = brewPath;
+  }
+
   console.log('FETCH_BREW_CONTENT action fired', brewId);
   const getUrl = `${ROOT_BREW_URL}${brewId}`;
 
