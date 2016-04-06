@@ -5,6 +5,12 @@ import createRoutes from '../routes';
 import configStore from '../store/configStore';
 import { syncHistoryWithStore } from 'react-router-redux';
 
+// prevent server from trying to load CSS
+if (process.env.BROWSER) {
+  require('semantic-ui-css/semantic.min.css');
+  require('semantic-ui-css/semantic.min.js');
+}
+
 const store = configStore();
 const history = syncHistoryWithStore(browserHistory, store);
 
