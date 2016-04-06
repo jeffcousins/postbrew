@@ -17,13 +17,13 @@ module.exports = {
     chunks: false
   },
   module: {
-    preLoaders: [
-      {
-        test: /\.jsx?$/,
-        loader: 'eslint-loader',
-        exclude: /node_modules/
-      }
-    ],
+    // preLoaders: [
+    //   {
+    //     test: /\.jsx?$/,
+    //     loader: 'eslint-loader',
+    //     exclude: /node_modules/
+    //   }
+    // ],
     loaders: [
       {
         test: /\.jsx?$/,
@@ -37,8 +37,16 @@ module.exports = {
         test: /\.css$/,
         loader: 'style-loader!css-loader'
       },
-      { 
+      {
+        test: /\.scss$/,
+        loader: 'css/locals?module!sass'
+      },
+      {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+        loader: "file"
+      },
+      { 
+        test: /\.(jpe?g|png|gif|svg)$/,
         loader: "file"
       },
       { test: /\.(woff|woff2)$/,
@@ -51,6 +59,10 @@ module.exports = {
       { 
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         loader: "url?limit=10000&mimetype=image/svg+xml"
+      },
+      { 
+        test: /vendor\/.+\.(jsx|js)$/,
+        loader: 'imports?jQuery=jquery,$=jquery,this=>window'
       }
     ]
   },
@@ -62,6 +74,9 @@ module.exports = {
         // Used as `if (process.env.BROWSER)...`
         BROWSER: JSON.stringify(true)
       }
+    }),
+    new webpack.ProvidePlugin({
+      'jQuery': 'jquery'
     })
   ]
 };
