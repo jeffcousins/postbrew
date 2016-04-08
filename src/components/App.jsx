@@ -1,6 +1,5 @@
 import React from 'react';
 import TopNav from './TopNav';
-import SearchBar from './SearchBar';
 const $ = require('jquery');
 
 const style = {
@@ -23,7 +22,6 @@ const App = React.createClass({
     return (
       <div style={style}>
         <TopNav forums={this.props.forums} />
-        <SearchBar />
         {this.props.children || <h1>postbrew</h1>}
 
         {/* Testing Semantic UI classes */}
