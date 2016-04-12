@@ -22,21 +22,12 @@ const BrewContent = React.createClass({
     this.props.fetchBrewContent(this.props.params.b);
   },
   componentWillReceiveProps (nextProps) {
-    console.log('Inside componentWillReceiveProps in BrewContent component');
-    console.log('this.props is:');
-    console.log(this.props);
-    console.log('nextProps.brewpath =?? this.props.brewpath:');
-    console.log(nextProps.brewpath + ' ??? ' + this.props.brewpath);
     if (nextProps.brewpath !== this.props.brewpath) {
       console.log('inside if statement before fetch?');
       this.props.fetchBrewContent(nextProps.brewpath);
     }
   },
   render () {
-    console.log('Inside render() in BrewContent component');
-    console.log('this.props is:');
-    console.log(this.props);
-
     if (!this.props.brewContent) {
       return (
         <div>
