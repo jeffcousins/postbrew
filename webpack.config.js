@@ -33,7 +33,7 @@ module.exports = {
         test: /\.json$/,
         loader: 'json-loader'
       },
-      { 
+      {
         test: /\.css$/,
         loader: 'style-loader!css-loader'
       },
@@ -43,24 +43,25 @@ module.exports = {
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "file"
+        loader: 'file'
       },
-      { 
+      {
         test: /\.(jpe?g|png|gif|svg)$/,
-        loader: "file"
+        loader: 'file'
       },
-      { test: /\.(woff|woff2)$/,
-        loader:"url?prefix=font/&limit=5000"
+      {
+        test: /\.(woff|woff2)$/,
+        loader: 'url?prefix=font/&limit=5000'
       },
-      { 
+      {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "url?limit=10000&mimetype=application/octet-stream"
+        loader: 'url?limit=10000&mimetype=application/octet-stream'
       },
-      { 
+      {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "url?limit=10000&mimetype=image/svg+xml"
+        loader: 'url?limit=10000&mimetype=image/svg+xml'
       },
-      { 
+      {
         test: /vendor\/.+\.(jsx|js)$/,
         loader: 'imports?jQuery=jquery,$=jquery,this=>window'
       }
@@ -68,7 +69,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      "process.env": {
+      'process.env': {
 
         // Mainly used to require CSS files with webpack, which can happen only on browser
         // Used as `if (process.env.BROWSER)...`

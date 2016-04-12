@@ -13,7 +13,7 @@ const App = React.createClass({
   render () {
     return (
       <div style={style}>
-        <TopNav forums={this.props.forums} />
+        <TopNav />
         {this.props.children || <h1>postbrew</h1>}
       </div>
     );
