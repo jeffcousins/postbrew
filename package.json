@@ -76,6 +76,7 @@
     "semantic-ui": "^2.1.8",
     "semantic-ui-css": "^2.1.8",
     "sequelize": "^3.21.0",
+    "sequelize-cli": "^2.3.1",
     "slug": "^0.9.1"
   }
 }
