@@ -35,7 +35,7 @@ const Brew = sequelize.define('brew', {
     type: STRING,
     allowNull: false
   },
-  owner: {
+  founder: {
     type: STRING
   }
 });
