@@ -2,7 +2,7 @@ import Sequelize, { STRING, INTEGER, TEXT } from 'sequelize';
 import slug from 'slug';
 
 const sequelize = new Sequelize(
-  'postbrew',
+  'postbrew_dev',
   'postgres',
   'postgres',
   {
@@ -92,6 +92,10 @@ const Post = sequelize.define('post', {
   content: {
     type: TEXT,
     allowNull: false
+  },
+  score: {
+    type: INTEGER,
+    defaultValue: 0
   }
 }, {
   hooks: {
@@ -127,47 +131,47 @@ sequelize
     force: true,
     logging: console.log
   })
-  .then(() => {
-    Brew.create({
-      brew_name: 'javascript',
-      title: 'JavaScript',
-      description: 'Everything you want to know about JavaScript',
-      url: '/b/javascript',
-      owner: 'jeffcousins'
-    })
-    .catch(err => {
-      console.log(err);
-    });
+  // .then(() => {
+  //   Brew.create({
+  //     brew_name: 'javascript',
+  //     title: 'JavaScript',
+  //     description: 'Everything you want to know about JavaScript',
+  //     url: '/b/javascript',
+  //     owner: 'jeffcousins'
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //   });
 
-    Brew.create({
-      brew_name: 'react',
-      title: 'React.js',
-      description: 'Build stuff in React.',
-      url: '/b/react',
-      owner: 'jeffcousins'
-    })
-    .catch(err => {
-      console.log(err);
-    });
+  //   Brew.create({
+  //     brew_name: 'react',
+  //     title: 'React.js',
+  //     description: 'Build stuff in React.',
+  //     url: '/b/react',
+  //     owner: 'jeffcousins'
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //   });
 
-    User.create({
-      username: 'jeffcousins',
-      password: 'notencrypted',
-      email: 'jeffcousins@me.com'
-    });
+  //   User.create({
+  //     username: 'jeffcousins',
+  //     password: 'notencrypted',
+  //     email: 'jeffcousins@me.com'
+  //   });
 
-    Post.create({
-      author_id: 1,
-      brew_id: 2,
-      title: 'ayyy lmao slugify my title plz',
-      content: 'This message will self-destruct in the near future.'
-    })
-    .catch(err => {
-      console.log(err);
-    });
-  })
-  .catch(err => {
-    console.log(err);
-  });
+  //   Post.create({
+  //     author_id: 1,
+  //     brew_id: 2,
+  //     title: 'ayyy lmao slugify my title plz',
+  //     content: 'This message will self-destruct in the near future.'
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //   });
+  // })
+  // .catch(err => {
+  //   console.log(err);
+  // });
 
 export default sequelize;
