@@ -64,6 +64,11 @@ const User = sequelize.define('user', {
     validate: {
       isEmail: true
     }
+  },
+  kudos: {
+    type: INTEGER,
+    allowNull: false,
+    defaultValue: 0
   }
 });
 
@@ -93,8 +98,9 @@ const Post = sequelize.define('post', {
     type: TEXT,
     allowNull: false
   },
-  score: {
+  kudos: {
     type: INTEGER,
+    allowNull: false,
     defaultValue: 0
   }
 }, {
@@ -123,6 +129,11 @@ const Comment = sequelize.define('comment', {
   content: {
     type: TEXT,
     allowNull: false
+  },
+  kudos: {
+    type: INTEGER,
+    allowNull: false,
+    defaultValue: 0
   }
 });
 
