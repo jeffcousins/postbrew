@@ -58,6 +58,8 @@ const User = sequelize.define('user', {
     type: STRING,
     allowNull: false
   },
+  first_name: STRING,
+  last_name: STRING,
   email: {
     type: STRING,
     allowNull: false,
