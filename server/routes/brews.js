@@ -18,15 +18,6 @@ const brews = (app) => {
 
   app.route('/api/b/:brewId')
     .get((req, res) => {
-      // Brew.findOne({
-      //   brewId: req.params.brewId
-      // }, function(err, doc) {
-      //   if (err) {
-      //     res.send(err);
-      //   } else {
-      //     res.send(doc);
-      //   }
-      // });
       models.Brew.findOne({
         where: {
           brew_name: req.params.brewId
