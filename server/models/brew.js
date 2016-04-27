@@ -9,8 +9,10 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
-      }
+        // `brew_id` will be added on Post model
+        Brew.hasMany(models.Post);
+      },
+      underscored: true
     }
   });
   return Brew;

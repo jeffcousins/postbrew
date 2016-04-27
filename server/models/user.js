@@ -10,8 +10,10 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
-      }
+        // `user_id` will be added on Post model
+        User.hasMany(models.Post);
+      },
+      underscored: true
     }
   });
   return User;
