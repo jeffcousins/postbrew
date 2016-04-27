@@ -20,6 +20,7 @@ Build your bundle:
 
 Have PostgreSQL running:
 Download for Mac at [Postgres.app](http://postgresapp.com/)
+
 Open the app before running the server in the next step:
 
 Run the server:
