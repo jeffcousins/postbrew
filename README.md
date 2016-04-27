@@ -6,7 +6,7 @@ A Reddit-like social networking app.
 
 Make sure you have webpack installed globally:
 
-`$ npm i -g webpack`
+`$ npm install -g webpack`
 
 Install npm dependencies in postbrew home directory:
 
