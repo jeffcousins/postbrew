@@ -11,13 +11,11 @@ import logger from 'morgan';
 import bodyParser from 'body-parser';
 import { brews, users } from './server/routes/routes';
 import configStore from './src/store/configStore';
+import createRoutes from './src/routes';
+
 const store = configStore();
-
-// require('./database.js');
-
 const baseTemplate = fs.readFileSync('./index.html');
 const template = _.template(baseTemplate);
-import createRoutes from './src/routes';
 
 const app = express();
 
