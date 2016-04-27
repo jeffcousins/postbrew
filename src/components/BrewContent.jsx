@@ -1,4 +1,5 @@
 import React from 'react';
+import BrewHeader from './BrewHeader';
 import PostList from './PostList';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -28,17 +29,19 @@ const BrewContent = React.createClass({
     }
   },
   render () {
-    if (!this.props.brewContent) {
+    console.log('inside BrewContent render function');
+    console.log('this.props is:');
+    console.log(this.props);
+    if (!this.props.brewContent.title) {
       return (
         <div>
-          <h2>No results found for {this.props.params.b}</h2>
+          <h3>No results found for {this.props.params.b}</h3>
         </div>
       );
     } else {
       return (
         <div>
-          <h1>{this.props.brewContent.title}</h1>
-          <p>{this.props.brewContent.description}</p>
+          <BrewHeader />
           <hr />
           <h2>Posts:</h2>
           <PostList />
