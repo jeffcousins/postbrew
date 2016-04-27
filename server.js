@@ -13,9 +13,8 @@ import { brews, users } from './server/routes/routes';
 import configStore from './src/store/configStore';
 const store = configStore();
 
-require('./database.js');
+// require('./database.js');
 
-const PORT = 8080;
 const baseTemplate = fs.readFileSync('./index.html');
 const template = _.template(baseTemplate);
 import createRoutes from './src/routes';
@@ -29,7 +28,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(logger('dev'));
 
 brews(app);
-users(app);
+//users(app);
 
 app.use((req, res) => {
   match({ routes: createRoutes(), location: req.url },
@@ -51,6 +50,22 @@ app.use((req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log('Listening on port ' + PORT + '. . .');
+if (app.get('env') === 'development') {
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
+    });
+  });
+}
+
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
 });
+
+export default app;
