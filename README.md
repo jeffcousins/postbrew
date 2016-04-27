@@ -2,6 +2,29 @@
 
 A Reddit-like social networking app.
 
+## Install:
+
+Make sure you have webpack installed globally:
+
+`$ npm i -g webpack`
+
+Install npm dependencies in postbrew home directory:
+
+`$ npm install`
+
+Build your bundle:
+
+`$ webpack` or
+`$ npm run build` or
+`$ npm run watch` (It will automatically run with the --watch flag)
+
+Have PostgreSQL running:
+Download for Mac at [Postgres.app](http://postgresapp.com/)
+Open the app before running the server in the next step:
+
+Run the server:
+`$ npm start` (Runs at http://localhost:8080)
+
 ***
 
 - [React](https://github.com/facebook/react)
