@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+// const debug = require('debug')('postbrew');
+import app from '../server';
+import models from '../server/models';
+
+app.set('port', process.env.PORT || 8080);
+
+models.sequelize.sync().then(function () {
+  const server = app.listen(app.get('port'), function() {
+    console.log('Express server listening on port ' + server.address().port);
+  });
+});
