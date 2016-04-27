@@ -36,11 +36,11 @@ const TopNav = React.createClass({
           <Link to='/b/express' className='item'>
             express
           </Link>
-          <Link to='/b/mongodb' className='item'>
-            mongodb
+          <Link to='/b/postgres' className='item'>
+            postgres
           </Link>
-          <Link to='/b/mongoose' className='item'>
-            mongoose
+          <Link to='/b/sequelize' className='item'>
+            sequelize
           </Link>
           <Link to='/b/webpack' className='item'>
             webpack
