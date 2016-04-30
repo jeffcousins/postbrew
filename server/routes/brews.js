@@ -1,4 +1,5 @@
 import models from '../models';
+import { auth } from '../utils/utils';
 
 const brews = (app) => {
   app.route('/api/brews')
@@ -27,6 +28,9 @@ const brews = (app) => {
         res.send(brew);
       });
     });
+
+  app.route('/signup')
+    .post(auth.signUp);
 };
 
 export default brews;
