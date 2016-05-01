@@ -45,11 +45,11 @@ app.use((req, res) => {
       } else {
         res.status(404).send('Not Found');
       }
-  });
+    });
 });
 
 if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
+  app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
@@ -58,7 +58,7 @@ if (app.get('env') === 'development') {
   });
 }
 
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,

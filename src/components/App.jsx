@@ -1,6 +1,6 @@
 import React from 'react';
 import TopNav from './TopNav';
-const $ = require('jquery');
+// const $ = require('jquery');
 
 const style = {
   'fontFamily': 'helvetica'

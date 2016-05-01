@@ -26,7 +26,6 @@
 //  without redux chrome devtools:
 // const store = createStore(rootReducer);
 
-
 // /* with redux chrome devtools: */
 // const store = createStore(rootReducer, initialState, compose(
 //   typeof window === 'object' && window.devToolsExtension !== 'undefined'

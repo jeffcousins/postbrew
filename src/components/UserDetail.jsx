@@ -1,7 +1,7 @@
 import React from 'react';
 
 const UserDetail = React.createClass({
-  render() {
+  render () {
     return (
       <div>
         <h1>User Detail</h1>

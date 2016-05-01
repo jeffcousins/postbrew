@@ -110,7 +110,7 @@ module.exports = {
         founder: 'jeffcousins',
         createdAt: new Date(),
         updatedAt: new Date()
-      },
+      }
     ]);
   },
 

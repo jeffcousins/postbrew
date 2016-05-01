@@ -31,8 +31,8 @@ auth.signUp = (req, res, next) => {
       kudos: 0
     });
 
-    res.send(user);
+    res.send(newUser);
   });
-}
+};
 
 export default auth;

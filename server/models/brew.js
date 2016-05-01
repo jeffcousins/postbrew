@@ -1,5 +1,5 @@
 'use strict';
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   var Brew = sequelize.define('Brew', {
     brew_name: DataTypes.STRING,
     title: DataTypes.STRING,
@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
     founder: DataTypes.STRING
   }, {
     classMethods: {
-      associate: function(models) {
+      associate: function (models) {
         // `brew_id` will be added on Post model
         Brew.hasMany(models.Post);
       },
