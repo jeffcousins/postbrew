@@ -1,33 +1,44 @@
-// import User from '../models/user';
+import models from '../models';
 
-// const users = (app) => {
-//   app.route('/api/users')
-//     .get((req, res) => {
-//       Brew.find(function(error, items) {
-//         res.send(items);
-//       });
-//     })
-//     .post((req, res) => {
-//       console.log('Adding user:', user);
-//       const user = req.body;
-//       const brewItem = new User(user);
-//       brewItem.save(function(err, data) {
-//         res.status(300).send();
-//       });
-//     });
+const users = (app) => {
+  // app.route('/api/users')
+  //   .get((req, res) => {
+  //     Brew.find(function(error, items) {
+  //       res.send(items);
+  //     });
+  //   })
+  //   .post((req, res) => {
+  //     console.log('Adding user:', user);
+  //     const user = req.body;
+  //     const brewItem = new User(user);
+  //     brewItem.save(function(err, data) {
+  //       res.status(300).send();
+  //     });
+  //   });
 
-//   app.route('/api/u/:username')
-//     .get((req, res) => {
-//       User.find({
-//         username: req.params.id
-//       }, function(err, data) {
-//         if (err) {
-//           res.send(err);
-//         } else {
-//           res.send(data);
-//         }
-//       });
-//     })
-// };
+  app.route('/api/u/:username')
+    .get((req, res) => {
+      models.User.findOne({
+        where: {
+          username: req.params.username
+        }
+      })
+      .then((user) => {
+        res.send(user);
+      });
+    });
 
-// export default users;
+  app.route('/api/b/:brewId')
+    .get((req, res) => {
+      models.Brew.findOne({
+        where: {
+          brew_name: req.params.brewId
+        }
+      })
+      .then((brew) => {
+        res.send(brew);
+      });
+    });
+};
+
+export default users;

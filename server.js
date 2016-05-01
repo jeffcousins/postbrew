@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(logger('dev'));
 
 brews(app);
-//users(app);
+users(app);
 
 app.use((req, res) => {
   match({ routes: createRoutes(), location: req.url },
