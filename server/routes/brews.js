@@ -25,11 +25,12 @@ const brews = (app) => {
         }
       })
       .then((brew) => {
+        console.log(brew);
         res.send(brew);
       });
     });
 
-  app.route('/signup')
+  app.route('/api/signup')
     .post(auth.signUp);
 };
 
