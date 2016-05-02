@@ -12,6 +12,7 @@ import bodyParser from 'body-parser';
 import { brews, users } from './server/routes/routes';
 import configStore from './src/store/configStore';
 import createRoutes from './src/routes';
+import passport from 'passport';
 
 const store = configStore();
 const baseTemplate = fs.readFileSync('./index.html');
@@ -24,6 +25,8 @@ app.use('/public', express.static('./public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(logger('dev'));
+app.use(passport.initialize());
+app.use(passport.session());
 
 brews(app);
 users(app);

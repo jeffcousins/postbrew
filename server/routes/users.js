@@ -1,4 +1,8 @@
 import models from '../models';
+import passport from 'passport';
+import { auth, passportUtil } from '../utils/utils';
+
+const requireAuth = passport.authenticate('jwt', { session: false });
 
 const users = (app) => {
   // app.route('/api/users')
@@ -16,6 +20,12 @@ const users = (app) => {
   //     });
   //   });
 
+  app.route('/test')
+    .get(requireAuth, (req, res) => {
+      console.log('wat');
+      res.json({ test: 'Auth seems to be working' });
+    });
+
   app.route('/api/u/:username')
     .get((req, res) => {
       models.User.findOne({
@@ -24,19 +34,7 @@ const users = (app) => {
         }
       })
       .then((user) => {
-        res.send(user);
-      });
-    });
-
-  app.route('/api/b/:brewId')
-    .get((req, res) => {
-      models.Brew.findOne({
-        where: {
-          brew_name: req.params.brewId
-        }
-      })
-      .then((brew) => {
-        res.send(brew);
+        res.json(user);
       });
     });
 };
