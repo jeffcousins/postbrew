@@ -29,9 +29,9 @@ auth.signUp = (req, res, next) => {
       last_name: lastName,
       email: email,
       kudos: 0
+    }).then((user) => {
+      res.send(user);
     });
-
-    res.send(newUser);
   });
 };
 

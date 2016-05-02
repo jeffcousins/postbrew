@@ -25,7 +25,6 @@ const brews = (app) => {
         }
       })
       .then((brew) => {
-        console.log(brew);
         res.send(brew);
       });
     });
