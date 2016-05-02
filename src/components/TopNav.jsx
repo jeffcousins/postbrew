@@ -72,9 +72,9 @@ const TopNav = React.createClass({
               </div>
               <div className='vertically fitted item'>
                 <div className='ui small buttons'>
-                  <button className='ui button'>Sign In</button>
+                  <Link to='/signin' className='ui button'>Sign In</Link>
                   <div className='or'></div>
-                  <button className='ui positive button'>Sign Up</button>
+                  <Link to='/signup' className='ui positive button'>Sign Up</Link>
                 </div>
               </div>
             </div>

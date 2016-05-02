@@ -79,6 +79,7 @@
     "react-router": "^2.0.1",
     "react-router-redux": "^4.0.1",
     "redux": "^3.3.1",
+    "redux-form": "^5.2.3",
     "semantic-ui": "^2.1.8",
     "semantic-ui-css": "^2.1.8",
     "sequelize": "^3.21.0",
