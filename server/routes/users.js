@@ -3,6 +3,7 @@ import passport from 'passport';
 import { auth, passportUtil } from '../utils/utils';
 
 const requireAuth = passport.authenticate('jwt', { session: false });
+const requireSignIn = passport.authenticate('local', { session: false });
 
 const users = (app) => {
   // app.route('/api/users')
@@ -22,10 +23,13 @@ const users = (app) => {
 
   app.route('/api/signup')
     .post(auth.signUp);
-    
-  app.route('/test')
+
+  app.route('/api/signin')
+    .post(requireSignIn, auth.signIn);
+
+  app.route('/api/test')
     .get(requireAuth, (req, res) => {
-      res.json({ test: 'Auth seems to be working' });
+      res.json({ response: 'Authentication successful.' });
     });
 
   app.route('/api/u/:username')
