@@ -1,5 +1,17 @@
 import models from '../models';
+import jwt from 'jwt-simple';
+import { secret } from '../../config';
+
 const auth = {};
+
+const createToken = (user) => {
+  const payload = {
+    sub: user.id,
+    iat: new Date().getTime()
+  };
+
+  return jwt.encode(payload, secret);
+};
 
 auth.signUp = (req, res, next) => {
   const { username, password, firstName, lastName, email } = req.body;
@@ -30,7 +42,9 @@ auth.signUp = (req, res, next) => {
       email: email,
       kudos: 0
     }).then((user) => {
-      res.send(user);
+      res.json({
+        token: createToken(user)
+      });
     });
   });
 };
