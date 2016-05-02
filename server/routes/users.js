@@ -20,9 +20,11 @@ const users = (app) => {
   //     });
   //   });
 
+  app.route('/api/signup')
+    .post(auth.signUp);
+    
   app.route('/test')
     .get(requireAuth, (req, res) => {
-      console.log('wat');
       res.json({ test: 'Auth seems to be working' });
     });
 

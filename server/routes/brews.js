@@ -28,9 +28,6 @@ const brews = (app) => {
         res.send(brew);
       });
     });
-
-  app.route('/api/signup')
-    .post(auth.signUp);
 };
 
 export default brews;
