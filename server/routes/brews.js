@@ -1,5 +1,4 @@
 import models from '../models';
-import { auth } from '../utils/utils';
 
 const brews = (app) => {
   app.route('/api/brews')

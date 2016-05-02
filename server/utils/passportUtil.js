@@ -38,7 +38,7 @@ const localLogin = new LocalStrategy((username, password, done) => {
       }
 
       return done(null, user);
-    })
+    });
   }, (err) => {
     return done(err);
   });

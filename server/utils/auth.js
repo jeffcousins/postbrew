@@ -34,7 +34,7 @@ auth.signUp = (req, res, next) => {
       });
     }
 
-    const newUser = models.User.create({
+    models.User.create({
       username: username,
       password: password,
       first_name: firstName,

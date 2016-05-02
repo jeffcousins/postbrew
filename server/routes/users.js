@@ -1,6 +1,6 @@
 import models from '../models';
 import passport from 'passport';
-import { auth, passportUtil } from '../utils/utils';
+import { auth } from '../utils/utils';
 
 const requireAuth = passport.authenticate('jwt', { session: false });
 const requireSignIn = passport.authenticate('local', { session: false });
