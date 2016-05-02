@@ -49,4 +49,8 @@ auth.signUp = (req, res, next) => {
   });
 };
 
+auth.signIn = (req, res, next) => {
+  res.json({ token: createToken(req.user) });
+};
+
 export default auth;

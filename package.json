@@ -69,6 +69,7 @@
     "mongoose": "^4.4.10",
     "passport": "^0.3.2",
     "passport-jwt": "^2.0.0",
+    "passport-local": "^1.0.0",
     "pg": "^4.5.3",
     "pg-hstore": "^2.3.2",
     "react": "^0.14.7",
