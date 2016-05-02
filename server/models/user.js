@@ -14,6 +14,17 @@ module.exports = function (sequelize, DataTypes) {
       associate: function (models) {
         // associations can be defined here
       }
+    },
+    instanceMethods: {
+      comparePassword (candidatePassword, callback) {
+        bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
+          if (err) {
+            return callback(err);
+          }
+
+          callback(null, isMatch);
+        })
+      }
     }
   });
 
