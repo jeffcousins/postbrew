@@ -1,14 +1,18 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
+import * as actions from '../../actions';
+
 const { object, func } = React.PropTypes;
 
 const SignIn = React.createClass({
   propTypes: {
     fields: object,
-    handleSubmit: func
+    handleSubmit: func,
+    userSignIn: func
   },
   handleFormSubmit ({ username, password }) {
     console.log(username, password);
+    this.props.userSignIn({ username, password });
   },
   render () {
     const { handleSubmit, fields: { username, password } } = this.props;
@@ -32,4 +36,4 @@ const SignIn = React.createClass({
 export default reduxForm({
   form: 'signin',
   fields: ['username', 'password']
-})(SignIn);
+}, null, actions)(SignIn);
