@@ -7,6 +7,7 @@ import { match, RouterContext } from 'react-router';
 import { Provider } from 'react-redux';
 import _ from 'lodash';
 import fs from 'fs';
+import cors from 'cors';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import { brews, users } from './server/routes/routes';
@@ -22,6 +23,7 @@ const app = express();
 
 app.use('/public', express.static('./public'));
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(logger('dev'));
