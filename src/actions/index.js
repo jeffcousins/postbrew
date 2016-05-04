@@ -47,7 +47,7 @@ export function receivedData (data) {
   };
 }
 
-export function userSignIn({ username, password }) {
+export function userSignIn ({ username, password }) {
   console.log('inside userSignIn action creator.');
   const postUrl = `${API_URL}/signin`;
 
@@ -59,7 +59,14 @@ export function userSignIn({ username, password }) {
         browserHistory.push('/');
       })
       .catch(() => {
-
+        dispatch(signInError('Incorrect username or password.'));
       });
+  };
+}
+
+export function signInError (err) {
+  return {
+    type: SIGN_IN_ERROR,
+    payload: err
   };
 }
