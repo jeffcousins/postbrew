@@ -1,6 +1,6 @@
 import axios from 'axios';
-
-const ROOT_BREW_URL = 'http://localhost:8080/api/b/';
+import { browserHistory } from 'react-router';
+import { API_URL, IS_SIGNED_IN, SIGN_IN_ERROR } from '../constants';
 
 export function showThread (activePost) {
   console.log('SHOW_THREAD action fired', activePost);
@@ -19,12 +19,12 @@ export function fetchBrewContent (brewPath) {
   }
 
   console.log('FETCH_BREW_CONTENT action fired', brewId);
-  const getUrl = `${ROOT_BREW_URL}${brewId}`;
+  const getUrl = `${API_URL}/b/${brewId}`;
 
   return function (dispatch) {
     return axios({
       url: getUrl,
-      timeout: 8000,
+      timeout: 3000,
       method: 'get',
       responseType: 'json'
     })
@@ -32,7 +32,8 @@ export function fetchBrewContent (brewPath) {
         dispatch(receivedData(response.data));
       })
       .catch(function (response) {
-        console.log('error trying to GET data from server');
+        console.log('error trying to GET data from server:');
+        console.log(response);
       });
   };
 }
@@ -43,5 +44,22 @@ export function receivedData (data) {
   return {
     type: 'RECEIVED',
     payload: data
+  };
+}
+
+export function userSignIn({ username, password }) {
+  console.log('inside userSignIn action creator.');
+  const postUrl = `${API_URL}/signin`;
+
+  return (dispatch) => {
+    axios.post(postUrl, { username, password })
+      .then((response) => {
+        dispatch({ type: IS_SIGNED_IN });
+        localStorage.setItem('token', response.data.token);
+        browserHistory.push('/');
+      })
+      .catch(() => {
+
+      });
   };
 }
