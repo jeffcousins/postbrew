@@ -17,7 +17,7 @@ auth.signUp = (req, res, next) => {
   const { username, password, firstName, lastName, email } = req.body;
 
   if (!username || !password || !firstName || !lastName || !email) {
-    return res.status(422).send({
+    return res.status(422).json({
       error: 'Sign-up unsuccessful. Missing required fields.'
     });
   }

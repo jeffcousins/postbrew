@@ -29,7 +29,7 @@ const users = (app) => {
 
   app.route('/api/test')
     .get(requireAuth, (req, res) => {
-      res.json({ response: 'Authentication successful.' });
+      res.json({ message: 'Authentication successful.' });
     });
 
   app.route('/api/u/:username')
