@@ -1,11 +1,20 @@
-import { IS_SIGNED_IN, IS_SIGNED_OUT } from '../constants';
+import { IS_SIGNED_IN, IS_SIGNED_OUT, SIGN_IN_ERROR } from '../constants';
 
-export default function(state = {}, action) {
+export default function (state = { errorMessage: '', isSignedIn: false }, action) {
+  const newState = {};
+
   switch (action.type) {
     case IS_SIGNED_IN:
-      return Object.assign(state, { isSignedIn: true });
+      Object.assign(newState, state, { isSignedIn: true });
+      return newState;
+
     case IS_SIGNED_OUT:
-      return Object.assign(state, { isSignedIn: false });
+      Object.assign(newState, state, { isSignedIn: false });
+      return newState;
+
+    case SIGN_IN_ERROR:
+      Object.assign(newState, state, { errorMessage: action.payload });
+      return newState;
   }
 
   return state;
