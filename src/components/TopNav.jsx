@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
+
 const $ = require('jquery');
 
 const TopNav = React.createClass({
@@ -14,9 +16,57 @@ const TopNav = React.createClass({
         });
     }
   },
+  renderAuthButton () {
+    if (this.props.isSignedIn) {
+      return (
+        <div className='brown item'>
+          <Link to='/signout' className='ui button'>Sign Out</Link>
+        </div>
+      );
+    } else {
+      return (
+        <div className='vertically fitted item'>
+          <div className='ui small buttons'>
+            <Link to='/signin' className='ui button'>Sign In</Link>
+            <div className='or'></div>
+            <Link to='/signup' className='ui positive button'>Sign Up</Link>
+          </div>
+        </div>
+      );
+    }
+  },
   render () {
+    console.log('------------------------');
+    console.log('------------------------');
+    console.log('------------------------');
+    console.log('------------------------');
+    console.log('------------------------');
+    console.log('inside TOPNAV: props is:');
+    console.log(this.props);
     return (
       <div>
+        <div>
+          <div className='ui top fixed menu'>
+            <div className='left brown menu'>
+              <Link to='/' className='brown inverted item'>
+                [ postbrew ]
+              </Link>
+            </div>
+              {/*
+                <div className='vertically fitted item'>
+                  <img src='http://static1.squarespace.com/static/5596a865e4b01a6af589a2cb/t/55b3956de4b00b13a952dadc/1437832557884/coffeepic.png' alt='postbrew'/>
+                </div>
+              */}
+            <div className='right menu'>
+              <div className='brown item'>
+                <div className='ui input tiny'>
+                  <input type='text' placeholder='Search' />
+                </div>
+              </div>
+              {this.renderAuthButton()}
+            </div>
+          </div>
+        </div>
         <div style={{marginTop: '49'}} className='ui small blue secondary inverted menu'>
           <Link to='/b/javascript' className='active item'>
             javascript
@@ -55,34 +105,15 @@ const TopNav = React.createClass({
             semantic ui
           </Link>
         </div>
-        <div>
-          <div className='ui top fixed menu'>
-            <div className='left menu'>
-              <div className='vertically fitted item'>
-                <img src='http://static1.squarespace.com/static/5596a865e4b01a6af589a2cb/t/55b3956de4b00b13a952dadc/1437832557884/coffeepic.png' alt='postbrew'/>
-              </div>
-              <a className='brown item'>About</a>
-              <a className='brown item'>GitHub</a>
-            </div>
-            <div className='right menu'>
-              <div className='brown item'>
-                <div className='ui input tiny'>
-                  <input type='text' placeholder='Search' />
-                </div>
-              </div>
-              <div className='vertically fitted item'>
-                <div className='ui small buttons'>
-                  <Link to='/signin' className='ui button'>Sign In</Link>
-                  <div className='or'></div>
-                  <Link to='/signup' className='ui positive button'>Sign Up</Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     );
   }
 });
 
-export default TopNav;
+function mapStateToProps (state) {
+  return {
+    isSignedIn: state.auth.isSignedIn
+  };
+}
+
+export default connect(mapStateToProps)(TopNav);
