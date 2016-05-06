@@ -2,7 +2,6 @@ import React from 'react';
 import { reduxForm } from 'redux-form';
 import * as actions from '../../actions';
 import { Link } from 'react-router';
-import $ from 'jquery';
 
 const { string, object, func } = React.PropTypes;
 
@@ -12,16 +11,6 @@ const SignIn = React.createClass({
     handleSubmit: func,
     userSignIn: func,
     errorMessage: string
-  },
-  componentDidMount () {
-    $('.ui.form')
-      .form({
-        on: 'blur',
-        fields: {
-          username: 'empty',
-          password: 'empty'
-        }
-      });
   },
   handleFormSubmit ({ username, password }) {
     this.props.userSignIn({ username, password });
@@ -51,13 +40,13 @@ const SignIn = React.createClass({
         <form className='ui form attached fluid segment' onSubmit={handleSubmit(this.handleFormSubmit)}>
           <div className='required field six wide'>
             <label>Username:</label>
-            <input type='text' name='username' {...username} />
+            <input type='text' {...username} />
           </div>
           <div className='required field six wide'>
             <label>Password:</label>
-            <input type='password' name='password' {...password} />
+            <input type='password' {...password} />
           </div>
-          <button className='ui button positive' action='submit'>Sign In</button>
+          <button className='ui button positive' type='submit'>Sign In</button>
         </form>
         {this.renderMessage()}
         <div className='ui bottom attached warning message'>
