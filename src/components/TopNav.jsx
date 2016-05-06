@@ -36,13 +36,6 @@ const TopNav = React.createClass({
     }
   },
   render () {
-    console.log('------------------------');
-    console.log('------------------------');
-    console.log('------------------------');
-    console.log('------------------------');
-    console.log('------------------------');
-    console.log('inside TOPNAV: props is:');
-    console.log(this.props);
     return (
       <div>
         <div>

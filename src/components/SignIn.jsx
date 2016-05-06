@@ -1,6 +1,6 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
-import * as actions from '../../actions';
+import * as actions from '../actions';
 import { Link } from 'react-router';
 
 const { string, object, func } = React.PropTypes;
@@ -15,10 +15,8 @@ const SignIn = React.createClass({
   handleFormSubmit ({ username, password }) {
     this.props.userSignIn({ username, password });
   },
-  renderMessage () {
-    if (!this.props.errorMessage) {
-      return;
-    } else {
+  renderErrorMessage () {
+    if (this.props.errorMessage) {
       return (
         <div className='ui attached fluid negative message'>
           {this.props.errorMessage}
@@ -48,7 +46,7 @@ const SignIn = React.createClass({
           </div>
           <button className='ui button positive' type='submit'>Sign In</button>
         </form>
-        {this.renderMessage()}
+        {this.renderErrorMessage()}
         <div className='ui bottom attached warning message'>
           Don't have an account? <Link to='signup'><strong>Sign up here</strong></Link> instead.
         </div>
