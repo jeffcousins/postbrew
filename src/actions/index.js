@@ -1,6 +1,12 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-import { API_URL, IS_SIGNED_IN, SIGN_IN_ERROR } from '../constants';
+
+import {
+  API_URL,
+  IS_SIGNED_IN,
+  IS_SIGNED_OUT,
+  SIGN_IN_ERROR
+} from '../constants';
 
 export function showThread (activePost) {
   console.log('SHOW_THREAD action fired', activePost);
@@ -48,7 +54,6 @@ export function receivedData (data) {
 }
 
 export function userSignIn ({ username, password }) {
-  console.log('inside userSignIn action creator.');
   const postUrl = `${API_URL}/signin`;
 
   return (dispatch) => {
@@ -69,4 +74,14 @@ export function signInError (err) {
     type: SIGN_IN_ERROR,
     payload: err
   };
+}
+
+export function userSignOut () {
+  localStorage.removeItem('token');
+
+  setTimeout(() => {
+    browserHistory.push('/');
+  }, 5500);
+
+  return { type: IS_SIGNED_OUT };
 }

@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 const SignOut = React.createClass({
+  componentDidMount () {
+    this.props.userSignOut();
+  },
   render () {
     return (
       <div className='ui center aligned segment'>
