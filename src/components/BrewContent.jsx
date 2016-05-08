@@ -13,13 +13,7 @@ const BrewContent = React.createClass({
     brewContent: object,
     brewpath: string
   },
-  componentWillMount () {
-/*
-    if (this.props.brewpath) {
-      this.props.fetchBrewContent(this.props.brewpath);
-    } else {
-    }
-*/
+  componentDidMount () {
     this.props.fetchBrewContent(this.props.params.b);
   },
   componentWillReceiveProps (nextProps) {

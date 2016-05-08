@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+const { bool } = React.PropTypes;
 
 const $ = require('jquery');
 
 const TopNav = React.createClass({
-  componentWillMount () {
+  propTypes: {
+    isSignedIn: bool
+  },
+  componentDidMount () {
     if (process.env.BROWSER) {
       $('.ui.menu')
         .on('click', '.item', function () {
