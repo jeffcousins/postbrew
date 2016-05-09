@@ -53,6 +53,22 @@ export function receivedData (data) {
   };
 }
 
+export function userSignUp (formProps) {
+  const postUrl = `${API_URL}/signup`;
+
+  return (dispatch) => {
+    axios.post(postUrl, formProps)
+      .then((response) => {
+        dispatch({ type: IS_SIGNED_IN });
+        localStorage.setItem('token', response.data.token);
+        browserHistory.push('/');
+      })
+      .catch((response) => {
+        dispatch(signInError(response.data.errorMessage));
+      });
+  }
+}
+
 export function userSignIn ({ username, password }) {
   const postUrl = `${API_URL}/signin`;
 
@@ -69,10 +85,10 @@ export function userSignIn ({ username, password }) {
   };
 }
 
-export function signInError (err) {
+export function signInError (errorMessage) {
   return {
     type: SIGN_IN_ERROR,
-    payload: err
+    payload: errorMessage
   };
 }
 
@@ -85,3 +101,4 @@ export function userSignOut () {
 
   return { type: IS_SIGNED_OUT };
 }
+
