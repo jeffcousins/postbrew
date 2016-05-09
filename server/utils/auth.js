@@ -18,7 +18,7 @@ auth.signUp = (req, res, next) => {
 
   if (!username || !password || !firstName || !lastName || !email) {
     return res.status(422).json({
-      error: 'Sign-up unsuccessful. Missing required fields.'
+      errorMessage: 'Sign-up unsuccessful. Missing required fields.'
     });
   }
 
@@ -30,7 +30,7 @@ auth.signUp = (req, res, next) => {
   .then((existingUser) => {
     if (existingUser) {
       return res.status(422).send({
-        error: 'Username is already in use. Please create a unique username.'
+        errorMessage: 'Username is already in use. Please create a unique username.'
       });
     }
 
