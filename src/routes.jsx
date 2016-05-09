@@ -16,6 +16,7 @@ const createRoutes = (props) => (
     <Route path='/signin' component={SignIn} />
     <Route path='/signout' component={SignOut} />
     <Route path='/thread/:postId' component={Thread} />
+    <Route path='*' component={BrewContent} />
   </Route>
 );
 
