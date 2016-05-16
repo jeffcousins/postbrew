@@ -17,9 +17,6 @@ module.exports = {
       description: {
         type: Sequelize.STRING
       },
-      url: {
-        type: Sequelize.STRING
-      },
       founder: {
         type: Sequelize.STRING
       },

@@ -4,7 +4,6 @@ module.exports = function (sequelize, DataTypes) {
     brew_name: DataTypes.STRING,
     title: DataTypes.STRING,
     description: DataTypes.STRING,
-    url: DataTypes.STRING,
     founder: DataTypes.STRING
   }, {
     classMethods: {
