@@ -13,12 +13,12 @@ const BrewHeader = React.createClass({
     brewPath: string
   },
   render () {
-    const { title, description, url, founder } = this.props.brewContent;
+    const { title, description, brew_name, founder } = this.props.brewContent;
 
     return (
       <div>
         <h1>{title}</h1>
-        <Link to={url}>{url}</Link>
+        <Link to={`/b/${brew_name}`}>{brew_name}</Link>
         <p>Brew created by: <Link to={`/u/${founder}`}>{founder}</Link></p>
         <p>{description}</p>
       </div>
