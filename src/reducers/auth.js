@@ -1,4 +1,9 @@
-import { IS_SIGNED_IN, IS_SIGNED_OUT, SIGN_IN_ERROR } from '../constants';
+import {
+  IS_SIGNED_IN,
+  IS_SIGNED_OUT,
+  SIGN_IN_ERROR,
+  LOCATION_CHANGE
+} from '../constants';
 
 export default function (state = { errorMessage: '', isSignedIn: false }, action) {
   const newState = {};
@@ -14,6 +19,10 @@ export default function (state = { errorMessage: '', isSignedIn: false }, action
 
     case SIGN_IN_ERROR:
       Object.assign(newState, state, { errorMessage: action.payload });
+      return newState;
+
+    case LOCATION_CHANGE:
+      Object.assign(newState, state, { errorMessage: '' });
       return newState;
   }
 
