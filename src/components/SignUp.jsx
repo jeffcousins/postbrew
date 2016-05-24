@@ -3,7 +3,7 @@ import { reduxForm } from 'redux-form';
 import * as actions from '../actions';
 import { Link } from 'react-router';
 
-const { object, func } = React.PropTypes;
+const { object, func, string } = React.PropTypes;
 
 const errStyle = {
   color: 'red'
@@ -13,7 +13,8 @@ const SignUp = React.createClass({
   propTypes: {
     fields: object,
     handleSubmit: func,
-    userSignUp: func
+    userSignUp: func,
+    errorMessage: string
   },
   handleFormSubmit (formProps) {
     this.props.userSignUp(formProps);
