@@ -5,8 +5,8 @@ module.exports = function (sequelize, DataTypes) {
     brew_id: DataTypes.INTEGER,
     title: DataTypes.STRING,
     content: DataTypes.TEXT,
-    kudos: DataTypes.INTEGER,
-    url: DataTypes.STRING
+    url: DataTypes.STRING,
+    kudos: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function (models) {
