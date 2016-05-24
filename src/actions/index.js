@@ -66,7 +66,7 @@ export function userSignUp (formProps) {
       .catch((response) => {
         dispatch(signInError(response.data.errorMessage));
       });
-  }
+  };
 }
 
 export function userSignIn ({ username, password }) {
