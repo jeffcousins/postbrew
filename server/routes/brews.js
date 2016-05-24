@@ -1,19 +1,12 @@
 import models from '../models';
 
 const brews = (app) => {
-  app.route('/api/brews')
-    .get((req, res) => {
-      // Brew.find(function(error, items) {
-      //   res.send(items);
-      // });
-    })
+  app.route('/api/brews/create')
     .post((req, res) => {
-      // console.log('Adding brew:', brew);
-      // const brew = req.body;
-      // const brewItem = new Brew(brew);
-      // brewItem.save(function(err, data) {
-      //   res.status(300).send();
-      // });
+      models.Brew.create(req.body)
+        .then((brew) => {
+          res.status(300).json(brew);
+        });
     });
 
   app.route('/api/b/:brewId')
@@ -22,8 +15,7 @@ const brews = (app) => {
         where: {
           brew_name: req.params.brewId
         }
-      })
-      .then((brew) => {
+      }).then((brew) => {
         res.json(brew);
       });
     });
