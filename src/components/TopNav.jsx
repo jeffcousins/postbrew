@@ -83,8 +83,8 @@ const TopNav = React.createClass({
           <Link to='/b/express' className='item'>
             express
           </Link>
-          <Link to='/b/postgres' className='item'>
-            postgres
+          <Link to='/b/postgresql' className='item'>
+            postgresql
           </Link>
           <Link to='/b/sequelize' className='item'>
             sequelize
