@@ -20,8 +20,11 @@ module.exports = {
       content: {
         type: Sequelize.TEXT
       },
-      score: {
+      kudos: {
         type: Sequelize.INTEGER
+      },
+      url: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

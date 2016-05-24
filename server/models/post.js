@@ -4,9 +4,9 @@ module.exports = function (sequelize, DataTypes) {
     author_id: DataTypes.INTEGER,
     brew_id: DataTypes.INTEGER,
     title: DataTypes.STRING,
-    slug: DataTypes.STRING,
     content: DataTypes.TEXT,
-    score: DataTypes.INTEGER
+    kudos: DataTypes.INTEGER,
+    url: DataTypes.STRING
   }, {
     classMethods: {
       associate: function (models) {
