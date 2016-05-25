@@ -8,6 +8,7 @@ import SignIn from './components/SignIn';
 import SignOut from './components/SignOut';
 import Thread from './components/Thread';
 import ReqAuth from './components/ReqAuth';
+import CreateBrew from './components/CreateBrew';
 
 const createRoutes = (props) => (
   <Route path='/' component={App} >
@@ -17,7 +18,7 @@ const createRoutes = (props) => (
     <Route path='signin' component={SignIn} />
     <Route path='signout' component={SignOut} />
     <Route path='thread/:postId' component={Thread} />
-    <Route path='brews/create' component={ReqAuth(/* CreateBrew */)} />
+    <Route path='brews/create' component={ReqAuth(CreateBrew)} />
     <Route path='*' component={BrewContent} />
   </Route>
 );
