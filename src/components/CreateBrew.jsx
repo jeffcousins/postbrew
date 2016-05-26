@@ -21,6 +21,22 @@ const CreateBrew = React.createClass({
       );
     }
   },
+  displayError (field) {
+    const { error } = field;
+    let color = '';
+
+    if (error) {
+      if (field.touched) {
+        color = 'red basic';
+      }
+
+      return (
+        <div className={`ui pointing ${color} label`}>
+          {error}
+        </div>
+      );
+    }
+  },
   render () {
     const {
       handleSubmit,
@@ -37,18 +53,26 @@ const CreateBrew = React.createClass({
           </div>
           <p>Please fill out the form below.</p>
         </div>
-        <form className='ui form attached fluid segment' onSubmit={handleSubmit(this.handleFormSubmit)}>
-          <div className='required field six wide'>
+        <form className='ui form attached fluid segment'
+              onSubmit={handleSubmit(this.handleFormSubmit)}>
+          <div className='required field seven wide'>
             <label>Brew Name</label>
-            <input type='text' {...brewName} placeholder='lowercasebrew' />
+            <input type='text' {...brewName} placeholder='hogwarts' />
+            {this.displayError(brewName)}
           </div>
-          <div className='required field six wide'>
+          <div className='ui divider'></div>
+          <div className='required field seven wide'>
             <label>Title</label>
-            <input type='text' {...title} placeholder='A short title.' />
+            <input type='text' {...title}
+                   placeholder='Witchcraft and wizardry.' />
+            {this.displayError(title)}
           </div>
-          <div className='required field six wide'>
+          <div className='ui divider'></div>
+          <div className='required field seven wide'>
             <label>Description</label>
-            <textarea rows='3' {...description}></textarea>
+            <textarea rows='3' className='four wide' {...description}>
+            </textarea>
+            {this.displayError(description)}
           </div>
           <button className='ui button positive' type='submit'>Create</button>
         </form>
@@ -64,9 +88,12 @@ const CreateBrew = React.createClass({
 function validate (formProps) {
   const errors = {};
   const { brewName, title, description } = formProps;
+  const alnum = /^[a-z0-9]+$/;
 
-  if (!brewName) {
-    errors.brewName = 'Please enter a brew name.';
+  if (!brewName || !alnum.test(brewName) ||
+      brewName !== brewName.toLowerCase()) {
+    errors.brewName = 'Lowercase alphanumeric characters only. No spaces ' +
+      'or special characters.';
   }
 
   if (!title) {
