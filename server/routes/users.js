@@ -27,11 +27,6 @@ const users = (app) => {
   app.route('/api/signin')
     .post(requireSignIn, auth.signIn);
 
-  app.route('/api/test')
-    .get(requireAuth, (req, res) => {
-      res.json({ message: 'Authentication successful.' });
-    });
-
   app.route('/api/u/:username')
     .get((req, res) => {
       models.User.findOne({
