@@ -9,10 +9,14 @@ import SignOut from './components/SignOut';
 import Thread from './components/Thread';
 import ReqAuth from './components/ReqAuth';
 import CreateBrew from './components/CreateBrew';
+import SubmitPost from './components/SubmitPost';
+
+// TODO: IndexRoute for brew header
 
 const createRoutes = (props) => (
   <Route path='/' component={App} >
     <Route path='b/:b' component={BrewContent} />
+    <Route path='b/:b/submit' component={SubmitPost} />
     <Route path='u/:u' component={UserDetail} />
     <Route path='signup' component={SignUp} />
     <Route path='signin' component={SignIn} />
