@@ -1,6 +1,8 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
 import * as actions from '../actions';
+import { Link } from 'react-router';
+
 const { object, func, string, number } = React.PropTypes;
 
 const CreateBrew = React.createClass({
@@ -11,15 +13,31 @@ const CreateBrew = React.createClass({
     errorMessage: string,
     userId: number
   },
+  getInitialState: function () {
+    return {brewNameInput: ''};
+  },
   handleFormSubmit (formProps) {
     formProps.userId = this.props.userId;
     this.props.createBrew(formProps);
+    this.setState({brewNameInput: formProps.brewName});
+  },
+  renderExistingBrewLink () {
+    if (this.props.errorMessage.slice(-17) === 'unique brew name.') {
+      return (
+        <div>
+          <strong>...or visit <Link to={`/b/${this.state.brewNameInput}`}>
+            /b/{this.state.brewNameInput}
+          </Link></strong>
+        </div>
+      )
+    }
   },
   renderErrorMessage () {
     if (this.props.errorMessage) {
       return (
         <div className='ui bottom attached negative message'>
           {this.props.errorMessage}
+          {this.renderExistingBrewLink()}
         </div>
       );
     }
@@ -52,11 +70,11 @@ const CreateBrew = React.createClass({
       <div className='ui container compact'>
         <div className='ui attached message'>
           <div className='header'>
-            Create a new Brew
+            Create a Brew
           </div>
-          <p>Please fill out the form below.</p>
+          <p>A new community for whatever topic you choose.</p>
         </div>
-        <form className='ui form attached fluid segment'
+        <form className='ui inverted form attached fluid segment'
               onSubmit={handleSubmit(this.handleFormSubmit)}>
           <div className='required field seven wide'>
             <label>Brew Name</label>
