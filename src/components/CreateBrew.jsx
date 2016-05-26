@@ -29,7 +29,7 @@ const CreateBrew = React.createClass({
             /b/{this.state.brewNameInput}
           </Link></strong>
         </div>
-      )
+      );
     }
   },
   renderErrorMessage () {
