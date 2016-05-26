@@ -1,21 +1,24 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
 import * as actions from '../actions';
-const { object, func, string } = React.PropTypes;
+const { object, func, string, number } = React.PropTypes;
 
 const CreateBrew = React.createClass({
   propTypes: {
     fields: object,
     handleSubmit: func,
-    errorMessage: string
+    createBrew: func,
+    errorMessage: string,
+    userId: number
   },
   handleFormSubmit (formProps) {
-    console.log(formProps);
+    formProps.userId = this.props.userId;
+    this.props.createBrew(formProps);
   },
   renderErrorMessage () {
     if (this.props.errorMessage) {
       return (
-        <div className='ui attached fluid negative message'>
+        <div className='ui bottom attached negative message'>
           {this.props.errorMessage}
         </div>
       );
@@ -77,9 +80,6 @@ const CreateBrew = React.createClass({
           <button className='ui button positive' type='submit'>Create</button>
         </form>
         {this.renderErrorMessage()}
-        <div className='ui bottom attached warning message'>
-          LOL
-        </div>
       </div>
     );
   }
@@ -107,8 +107,12 @@ function validate (formProps) {
   return errors;
 }
 
+function mapStateToProps (state) {
+  return { userId: state.auth.userId, errorMessage: state.auth.errorMessage };
+}
+
 export default reduxForm({
   form: 'createbrew',
   fields: ['brewName', 'title', 'description'],
   validate
-})(CreateBrew);
+}, mapStateToProps, actions)(CreateBrew);
