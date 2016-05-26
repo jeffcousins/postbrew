@@ -101,6 +101,9 @@ const TopNav = React.createClass({
           <Link to='/b/semanticui' className='item'>
             semantic ui
           </Link>
+          <Link to='/brews/create' className='item'>
+            [ create ]
+          </Link>
         </div>
       </div>
     );

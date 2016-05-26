@@ -21,6 +21,7 @@ const BrewHeader = React.createClass({
         <Link to={`/b/${brew_name}`}>{brew_name}</Link>
         <p>Brew created by: <Link to={`/u/${founder}`}>{founder}</Link></p>
         <p>{description}</p>
+        <p><Link to={`/b/${brew_name}/submitpost`}>Submit a post to {brew_name}.</Link></p>
       </div>
     );
   }
