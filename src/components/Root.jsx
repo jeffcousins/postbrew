@@ -13,11 +13,11 @@ if (process.env.BROWSER) {
 }
 
 const store = configStore();
-
 const token = localStorage.getItem('token');
+const userId = localStorage.getItem('userId');
 
 if (token) {
-  store.dispatch({ type: IS_SIGNED_IN });
+  store.dispatch({ type: IS_SIGNED_IN, payload: userId });
 }
 
 const history = syncHistoryWithStore(browserHistory, store);

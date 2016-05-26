@@ -23,9 +23,6 @@ const BrewContent = React.createClass({
     }
   },
   render () {
-    console.log('inside BrewContent render function');
-    console.log('this.props is:');
-    console.log(this.props);
     if (!this.props.brewContent.title) {
       return (
         <div>
