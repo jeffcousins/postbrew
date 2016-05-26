@@ -43,14 +43,18 @@ auth.signUp = (req, res, next) => {
       kudos: 0
     }).then((user) => {
       res.json({
-        token: createToken(user)
+        token: createToken(user),
+        userId: req.user.dataValues.id
       });
     });
   });
 };
 
 auth.signIn = (req, res, next) => {
-  res.json({ token: createToken(req.user) });
+  res.json({
+    token: createToken(req.user),
+    userId: req.user.dataValues.id
+  });
 };
 
 export default auth;

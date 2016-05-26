@@ -10,7 +10,11 @@ export default function (state = { errorMessage: '', isSignedIn: false }, action
 
   switch (action.type) {
     case IS_SIGNED_IN:
-      Object.assign(newState, state, { errorMessage: '', isSignedIn: true });
+      Object.assign(newState, state, {
+        errorMessage: '',
+        isSignedIn: true,
+        userId: Number(action.payload)
+      });
       return newState;
 
     case IS_SIGNED_OUT:
