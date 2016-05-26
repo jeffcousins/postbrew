@@ -53,17 +53,33 @@ export function receivedData (data) {
   };
 }
 
+export function createBrew (formProps) {
+  const postUrl = `${API_URL}/brews/create`;
+
+  return (dispatch) => {
+    axios.post(postUrl, formProps, {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    }).then((response) => {
+      browserHistory.push(`/b/${formProps.brewName}`);
+    }).catch((response) => {
+      dispatch(signInError(response.data.errorMessage));
+    });
+  };
+}
+
 export function userSignUp (formProps) {
   const postUrl = `${API_URL}/signup`;
 
   return (dispatch) => {
     axios.post(postUrl, formProps)
       .then((response) => {
-        dispatch({ type: IS_SIGNED_IN });
+        dispatch({ type: IS_SIGNED_IN, payload: response.data.userId });
         localStorage.setItem('token', response.data.token);
+        localStorage.setItem('userId', response.data.userId);
         browserHistory.push('/');
-      })
-      .catch((response) => {
+      }).catch((response) => {
         dispatch(signInError(response.data.errorMessage));
       });
   };
@@ -75,8 +91,9 @@ export function userSignIn ({ username, password }) {
   return (dispatch) => {
     axios.post(postUrl, { username, password })
       .then((response) => {
-        dispatch({ type: IS_SIGNED_IN });
+        dispatch({ type: IS_SIGNED_IN, payload: response.data.userId });
         localStorage.setItem('token', response.data.token);
+        localStorage.setItem('userId', response.data.userId);
         browserHistory.push('/');
       })
       .catch(() => {
