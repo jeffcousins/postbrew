@@ -22,11 +22,13 @@ const SubmitPost = React.createClass({
       fields: {
         title,
         url,
-        content
+        content,
+        brewName
       }
     } = this.props;
 
-    const brewUrl = `/b/${this.props.brewContent.brew_name}`;
+    brewName.value = this.props.brewContent.brew_name;
+    const brewUrl = `/b/${brewName.value}`;
 
     return (
       <div className='ui container compact'>
@@ -71,5 +73,5 @@ function mapStateToProps (state) {
 
 export default reduxForm({
   form: 'submitpost',
-  fields: ['title', 'content', 'url']
+  fields: ['title', 'content', 'url', 'brewName']
 }, mapStateToProps, actions)(SubmitPost);

@@ -34,8 +34,7 @@ const BrewContent = React.createClass({
         <div>
           <BrewHeader />
           <hr />
-          <h2>Posts:</h2>
-          <PostList />
+          {this.props.children}
         </div>
       );
     }
