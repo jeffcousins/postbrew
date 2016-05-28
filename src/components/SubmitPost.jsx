@@ -1,5 +1,6 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
+import { Link } from 'react-router';
 import * as actions from '../actions';
 
 const { object, func, string, number } = React.PropTypes;
@@ -25,13 +26,15 @@ const SubmitPost = React.createClass({
       }
     } = this.props;
 
+    const brewUrl = `/b/${this.props.brewContent.brew_name}`;
+
     return (
       <div className='ui container compact'>
         <div className='ui attached message'>
           <div className='header'>
-            Submit a Post
+            Submit a post to <Link to={brewUrl}>{brewUrl}</Link>
           </div>
-          <p>Ask a question; post a link; give advice</p>
+          <p>Ask a question. Post a link. Give advice.</p>
         </div>
         <form className='ui inverted form attached fluid segment'
               onSubmit={handleSubmit(this.handleFormSubmit)}>
@@ -41,13 +44,13 @@ const SubmitPost = React.createClass({
           </div>
           <div className='ui divider'></div>
           <div className='field seven wide'>
-            <label>URL</label>
+            <label>URL (optional)</label>
             <input type='text' {...url}
                    placeholder='this.isoptional.com' />
           </div>
           <div className='ui divider'></div>
           <div className='field seven wide'>
-            <label>Text</label>
+            <label>Text (optional)</label>
             <input type='text' {...content}
                    placeholder='This is optional.' />
           </div>
