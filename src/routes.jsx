@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 import App from './components/App';
 import BrewContent from './components/BrewContent';
 import UserDetail from './components/UserDetail';
@@ -15,8 +15,10 @@ import SubmitPost from './components/SubmitPost';
 
 const createRoutes = (props) => (
   <Route path='/' component={App} >
+    <Route path='b/:b/' component={BrewContent}>
+      <Route path='submit' component={ReqAuth(SubmitPost)} />
+    </Route>
     <Route path='b/:b' component={BrewContent} />
-    <Route path='b/:b/submit' component={SubmitPost} />
     <Route path='u/:u' component={UserDetail} />
     <Route path='signup' component={SignUp} />
     <Route path='signin' component={SignIn} />
