@@ -69,6 +69,22 @@ export function createBrew (formProps) {
   };
 }
 
+export function submitPost (formProps) {
+  const postUrl = `${API_URL}/brews/submitpost`;
+
+  return (dispatch) => {
+    axios.post(postUrl, formProps, {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    }).then((response) => {
+
+    }).catch((response) => {
+      dispatch(signInError(response.data.errorMessage));
+    });
+  }
+}
+
 export function userSignUp (formProps) {
   const postUrl = `${API_URL}/signup`;
 
