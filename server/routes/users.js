@@ -2,25 +2,10 @@ import models from '../models';
 import passport from 'passport';
 import { auth } from '../utils/utils';
 
-const requireAuth = passport.authenticate('jwt', { session: false });
+// const requireAuth = passport.authenticate('jwt', { session: false });
 const requireSignIn = passport.authenticate('local', { session: false });
 
 const users = (app) => {
-  // app.route('/api/users')
-  //   .get((req, res) => {
-  //     Brew.find(function(error, items) {
-  //       res.send(items);
-  //     });
-  //   })
-  //   .post((req, res) => {
-  //     console.log('Adding user:', user);
-  //     const user = req.body;
-  //     const brewItem = new User(user);
-  //     brewItem.save(function(err, data) {
-  //       res.status(300).send();
-  //     });
-  //   });
-
   app.route('/api/signup')
     .post(auth.signUp);
 

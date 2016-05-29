@@ -1,5 +1,5 @@
 'use strict';
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   var Post = sequelize.define('Post', {
     title: DataTypes.STRING,
     url: DataTypes.STRING,
@@ -8,11 +8,12 @@ module.exports = function(sequelize, DataTypes) {
     kudos: DataTypes.INTEGER
   }, {
     classMethods: {
-      associate: function(models) {
+      associate: function (models) {
         Post.belongsTo(models.Brew);
         Post.belongsTo(models.User);
       }
     }
   });
+
   return Post;
 };

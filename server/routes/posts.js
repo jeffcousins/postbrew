@@ -52,13 +52,9 @@ const posts = (app) => {
           res.json({
             postId: post.dataValues.id
           });
-        }).catch((err) => {
-          res.status(500).json({
-            errorMessage: 'Could not create post.'
-          });
         });
       }
     });
-}
+};
 
 export default posts;
