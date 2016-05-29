@@ -31,14 +31,12 @@ export function fetchBrewContent (brewPath) {
       timeout: 3000,
       method: 'get',
       responseType: 'json'
-    })
-      .then(function (response) {
-        dispatch(receivedData(response.data));
-      })
-      .catch(function (response) {
-        console.log('error trying to GET data from server:');
-        console.log(response);
-      });
+    }).then(function (response) {
+      dispatch(receivedData(response.data));
+    }).catch(function (response) {
+      console.log('error trying to GET data from server:');
+      console.log(response);
+    });
   };
 }
 

@@ -6,9 +6,11 @@ export default function (state = INITIAL_STATE, action) {
 
   if (action.type === 'RECEIVED') {
     const newState = {};
-    Object.assign(newState, state, action.payload);
-    console.log('about to return real newState:');
-    console.log(newState);
+    Object.assign(newState,
+      state,
+      action.payload.brew,
+      { posts: action.payload.posts }
+    );
     return newState;
   }
 
