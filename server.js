@@ -10,7 +10,7 @@ import fs from 'fs';
 import cors from 'cors';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
-import { brews, users } from './server/routes/routes';
+import { brews, users, posts } from './server/routes/routes';
 import configStore from './src/store/configStore';
 import createRoutes from './src/routes';
 import passport from 'passport';
@@ -32,6 +32,7 @@ app.use(passport.session());
 
 brews(app);
 users(app);
+posts(app);
 
 app.use((req, res) => {
   match({ routes: createRoutes(), location: req.url },
