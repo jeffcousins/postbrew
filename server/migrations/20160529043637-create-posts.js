@@ -8,20 +8,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      author_id: {
-        type: Sequelize.INTEGER
-      },
-      brew_id: {
-        type: Sequelize.INTEGER
-      },
       title: {
+        type: Sequelize.STRING
+      },
+      url: {
         type: Sequelize.STRING
       },
       content: {
         type: Sequelize.TEXT
-      },
-      url: {
-        type: Sequelize.STRING
       },
       kudos: {
         type: Sequelize.INTEGER
