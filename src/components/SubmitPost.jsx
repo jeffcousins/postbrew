@@ -11,7 +11,8 @@ const SubmitPost = React.createClass({
     handleSubmit: func,
     errorMessage: string,
     userId: number,
-    brewContent: object
+    brewContent: object,
+    submitPost: func
   },
   handleFormSubmit (formProps) {
     formProps.brewName = this.props.brewContent.brew_name;
@@ -30,7 +31,7 @@ const SubmitPost = React.createClass({
       }
     } = this.props;
 
-    const brewUrl = `/b/${this.props.brewContent.brew_name}`;
+    const brewUrl = `/b/${brewContent.brew_name}`;
 
     return (
       <div className='ui container compact'>

@@ -9,7 +9,6 @@ import {
 } from '../constants';
 
 export function showThread (activePost) {
-  console.log('SHOW_THREAD action fired', activePost);
   return {
     type: 'SHOW_THREAD',
     activePost
@@ -24,7 +23,6 @@ export function fetchBrewContent (brewPath) {
     brewId = brewPath;
   }
 
-  console.log('FETCH_BREW_CONTENT action fired', brewId);
   const getUrl = `${API_URL}/b/${brewId}`;
 
   return function (dispatch) {
@@ -45,8 +43,6 @@ export function fetchBrewContent (brewPath) {
 }
 
 export function receivedData (data) {
-  console.log('inside receivedData action creator: data is:');
-  console.log(data);
   return {
     type: 'RECEIVED',
     payload: data
@@ -82,7 +78,7 @@ export function submitPost (formProps) {
     }).catch((response) => {
       dispatch(signInError(response.data.errorMessage));
     });
-  }
+  };
 }
 
 export function userSignUp (formProps) {

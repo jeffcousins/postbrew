@@ -11,14 +11,14 @@ const BrewContent = React.createClass({
     params: object,
     fetchBrewContent: func,
     brewContent: object,
-    brewpath: string
+    brewpath: string,
+    children: React.PropTypes.element
   },
   componentDidMount () {
     this.props.fetchBrewContent(this.props.params.b);
   },
   componentWillReceiveProps (nextProps) {
     if (nextProps.brewpath !== this.props.brewpath) {
-      console.log('inside if statement before fetch?');
       this.props.fetchBrewContent(nextProps.brewpath);
     }
   },
