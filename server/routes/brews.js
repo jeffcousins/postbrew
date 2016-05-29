@@ -47,7 +47,7 @@ const brews = (app) => {
           UserId: userId
         }).then((brew) => {
           res.json({
-            brew: brew
+            brew
           });
         });
       }
@@ -60,7 +60,12 @@ const brews = (app) => {
           brew_name: req.params.brewId
         }
       }).then((brew) => {
-        res.json(brew);
+        brew.getPosts().then((posts) => {
+          res.json({
+            brew,
+            posts
+          });
+        });
       });
     });
 };
