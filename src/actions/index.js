@@ -70,7 +70,7 @@ export function createBrew (formProps) {
 }
 
 export function submitPost (formProps) {
-  const postUrl = `${API_URL}/brews/submitpost`;
+  const postUrl = `${API_URL}/posts/submit`;
 
   return (dispatch) => {
     axios.post(postUrl, formProps, {
