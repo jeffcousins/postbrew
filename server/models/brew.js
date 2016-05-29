@@ -8,7 +8,7 @@ module.exports = function (sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function (models) {
-        Brew.hasMany(models.Posts);
+        Brew.hasMany(models.Post);
         Brew.belongsTo(models.User);
       },
       underscored: true
