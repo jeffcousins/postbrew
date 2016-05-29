@@ -7,7 +7,7 @@ import { showThread } from '../actions/index';
 const PostList = React.createClass({
   propTypes: {
     params: React.PropTypes.object,
-    posts: React.PropTypes.object,
+    posts: React.PropTypes.array,
     showThread: React.PropTypes.func
   },
   componentWillMount () {
@@ -16,25 +16,17 @@ const PostList = React.createClass({
     console.log(this.props);
   },
   renderPosts () {
-    if (!this.props.posts) {
-      return (
-        <div>
-          Posts!
-        </div>
-      );
+    if (!this.props.posts.length) {
+      return;
     } else {
       return this.props.posts.map((post) => (
-        <div key={post.p_id} onClick={() => this.props.showThread(post)}>
-          <PostItem {...post} />
+        <div key={post.id}>
+          <p>{post.title}</p>
         </div>
       ));
     }
   },
   render () {
-    console.log('Inside render() in PostList component');
-    console.log('this.props is:');
-    console.log(this.props);
-
     return (
       <div>
         {this.renderPosts()}
