@@ -12,8 +12,8 @@ module.exports = function (sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function (models) {
-        // associations can be defined here
-        User.hasMany(models.Post);
+        User.hasMany(models.Posts);
+        User.hasMany(models.Brew);
       }
     },
     instanceMethods: {
