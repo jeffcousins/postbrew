@@ -44,7 +44,7 @@ auth.signUp = (req, res, next) => {
     }).then((user) => {
       res.json({
         token: createToken(user),
-        userId: req.user.dataValues.id
+        userId: user.dataValues.id
       });
     });
   });
