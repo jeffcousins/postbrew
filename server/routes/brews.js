@@ -34,11 +34,17 @@ const brews = (app) => {
       });
 
       function createBrew (user) {
+        if (!user) {
+          return res.status(404).send({
+            errorMessage: 'Could not find user.'
+          });
+        }
+
         models.Brew.create({
           brew_name: brewName.toLowerCase(),
           title: title,
           description: description,
-          founder: user.username
+          UserId: userId
         }).then((brew) => {
           res.json({
             brew: brew
