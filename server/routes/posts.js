@@ -47,7 +47,8 @@ const posts = (app) => {
           content: content,
           brew_name: brewName.toLowerCase(),
           BrewId: brewId,
-          UserId: userId
+          UserId: userId,
+          kudos: 0
         }).then((post) => {
           res.json({
             postId: post.dataValues.id
