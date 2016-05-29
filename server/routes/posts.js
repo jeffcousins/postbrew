@@ -6,17 +6,15 @@ const requireAuth = passport.authenticate('jwt', { session: false });
 const posts = (app) => {
   app.route('/api/posts/submit')
     .post(requireAuth, (req, res) => {
-      let { title, url, content, brewName, userId } = req.body;
+      let { title, url, content, brewName, brewId, userId } = req.body;
       url = url || null;
       content = content || null;
 
-      if (!title || !brewName || !userId) {
+      if (!title || !brewName || !brewId || !userId) {
         return res.status(422).json({
           errorMessage: 'Missing required fields and must be signed in.'
         });
       }
-
-      return res.json({ title, url, content, brewName, userId });
 
       models.Brew.findOne({
         where: {
@@ -24,8 +22,8 @@ const posts = (app) => {
         }
       }).then((existingBrew) => {
         if (!existingBrew) {
-          return res.status(422).send({
-            errorMessage: brewName + ' does not exist.'
+          return res.status(404).send({
+            errorMessage: `/b/${brewName} does not exist.`
           });
         }
 
@@ -44,14 +42,19 @@ const posts = (app) => {
         }
 
         models.Post.create({
-          brew_name: brewName.toLowerCase(), // TODO: refactor to BrewId
-          user_id: userId,
           title: title,
           url: url,
-          content: content
+          content: content,
+          brew_name: brewName.toLowerCase(),
+          BrewId: brewId,
+          UserId: userId
         }).then((post) => {
           res.json({
-            post: post
+            postId: post.dataValues.id
+          });
+        }).catch((err) => {
+          res.status(500).json({
+            errorMessage: 'Could not create post.'
           });
         });
       }
