@@ -1,17 +1,18 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var Posts = sequelize.define('Posts', {
+  var Post = sequelize.define('Post', {
     title: DataTypes.STRING,
     url: DataTypes.STRING,
     content: DataTypes.TEXT,
+    brew_name: DataTypes.STRING,
     kudos: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
-        Posts.belongsTo(models.Brew);
-        Posts.belongsTo(models.User);
+        Post.belongsTo(models.Brew);
+        Post.belongsTo(models.User);
       }
     }
   });
-  return Posts;
+  return Post;
 };

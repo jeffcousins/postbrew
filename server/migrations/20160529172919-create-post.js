@@ -17,6 +17,9 @@ module.exports = {
       content: {
         type: Sequelize.TEXT
       },
+      brew_name: {
+        type: Sequelize.STRING
+      },
       kudos: {
         type: Sequelize.INTEGER
       },
