@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-const { object, string } = React.PropTypes;
+const { object, string, bool } = React.PropTypes;
 
 // TODO: may only be a functional component
 // instead of mapping redux state to props, pass them in from
@@ -10,18 +10,36 @@ const { object, string } = React.PropTypes;
 const BrewHeader = React.createClass({
   propTypes: {
     brewContent: object,
-    brewPath: string
+    brewPath: string,
+    isSignedIn: bool
+  },
+  renderSubmitPostButton () {
+    if (this.props.isSignedIn) {
+      return (
+        <Link to={`/b/${this.props.brewContent.brew_name}/submit`}>
+          <button className='tiny ui compact black button'>
+            + Submit a post
+          </button>
+        </Link>
+      );
+    } else {
+      return (
+        <Link to={`/signin`}>
+          <button className='mini ui compact button'>
+            Sign in to submit a post
+          </button>
+        </Link>
+      );
+    }
   },
   render () {
-    const { title, description, brew_name, founder } = this.props.brewContent;
+    const { title, description, brew_name, username } = this.props.brewContent;
 
     return (
-      <div>
-        <h1>{title}</h1>
-        <Link to={`/b/${brew_name}`}>{brew_name}</Link>
-        <p>Brew created by: <Link to={`/u/${founder}`}>{founder}</Link></p>
-        <p>{description}</p>
-        <p><Link to={`/b/${brew_name}/submit`}>Submit a post to /b/{brew_name}.</Link></p>
+      <div className='ui tall stacked segment'>
+        <span className='ui header'>{title}</span>
+        <p>[ <Link to={`/b/${brew_name}`}>/b/{brew_name}</Link> ] - {description}</p>
+        {this.renderSubmitPostButton()}
       </div>
     );
   }
@@ -30,7 +48,8 @@ const BrewHeader = React.createClass({
 function mapStateToProps (state) {
   return {
     brewContent: state.brewContent,
-    brewPath: state.brewContent.pathname
+    brewPath: state.brewContent.pathname,
+    isSignedIn: state.auth.isSignedIn
   };
 }
 
