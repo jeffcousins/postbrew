@@ -58,8 +58,14 @@ const brews = (app) => {
       models.Brew.findOne({
         where: {
           brew_name: req.params.brewId
-        }
+        },
+        include: [
+          { model: models.User }
+        ]
       }).then((brew) => {
+        brew.dataValues.username = brew.dataValues.User.dataValues.username;
+        delete brew.dataValues.User;
+        
         brew.getPosts({
           order: [['createdAt', 'DESC']],
           include: [
