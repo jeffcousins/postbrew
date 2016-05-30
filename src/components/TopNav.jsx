@@ -14,17 +14,17 @@ const TopNav = React.createClass({
   propTypes: {
     isSignedIn: bool
   },
-  componentDidMount () {
-    if (process.env.BROWSER) {
-      $('.ui.menu')
-        .on('click', '.item', function () {
-          $(this)
-            .addClass('active')
-            .siblings('.item')
-            .removeClass('active');
-        });
-    }
-  },
+  // componentDidMount () {
+  //   if (process.env.BROWSER) {
+  //     $('.brewmenu')
+  //       .on('click', '.item', function () {
+  //         $(this)
+  //           .addClass('active')
+  //           .siblings('.item')
+  //           .removeClass('active');
+  //       });
+  //   }
+  // },
   renderAuthButton () {
     if (this.props.isSignedIn) {
       return (
@@ -49,7 +49,7 @@ const TopNav = React.createClass({
       <div>
         <div>
           <div className='ui top menu'>
-            <div className='left brown menu'>
+            <div className='left menu'>
               <Link to='/' className='ui green inverted item header'>
                 [ postbrew ]
               </Link>
@@ -60,8 +60,8 @@ const TopNav = React.createClass({
             </div>
           </div>
         </div>
-        <div style={brewBarStyle} className='ui small blue secondary inverted menu'>
-          <Link to='/b/javascript' className='active item'>
+        <div style={brewBarStyle} className='ui small blue secondary inverted menu brewmenu'>
+          <Link to='/b/javascript' className='item'>
             javascript
           </Link>
           <Link to='/b/es6' className='item'>
