@@ -2,22 +2,19 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const PostItem = (props) => (
-  <div>
-    <Link to={`/thread/${props.p_id}`}>
-      <h3>{props.title}</h3>
-    </Link>
-    <h4>{props.author}</h4>
-    <p>{props.content}</p>
+  <div className='item'>
+    <div className='content'>
+      <div className='header'>{props.data.title}</div>
+      <div className='description'>{props.data.username}</div>
+      <p>{props.data.createdAt}</p>
+    </div>
   </div>
 );
 
-const { string } = React.PropTypes;
+const { object } = React.PropTypes;
 
 PostItem.propTypes = {
-  title: string.isRequired,
-  author: string.isRequired,
-  content: string.isRequired,
-  p_id: string.isRequired
+  data: object
 };
 
 export default PostItem;

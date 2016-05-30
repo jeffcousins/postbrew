@@ -15,15 +15,13 @@ const PostList = React.createClass({
       return;
     } else {
       return this.props.posts.map((post) => (
-        <div key={post.id}>
-          <p><u>{post.title}</u> by {post.username}</p>
-        </div>
+        <PostItem key={post.id} data={post} />
       ));
     }
   },
   render () {
     return (
-      <div>
+      <div className='ui relaxed divided list'>
         {this.renderPosts()}
       </div>
     );
