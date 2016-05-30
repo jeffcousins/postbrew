@@ -60,11 +60,21 @@ const brews = (app) => {
           brew_name: req.params.brewId
         }
       }).then((brew) => {
-        brew.getPosts().then((posts) => {
-          res.json({
-            brew,
-            posts
+        brew.getPosts({
+          order: [['createdAt', 'DESC']],
+          include: [
+            { model: models.User }
+          ]
+        }).then((posts) => {
+          // remove all User data other than username before sending response
+          posts = posts.map((post) => {
+            post.dataValues.username = post.dataValues.User
+              .dataValues.username;
+            delete post.dataValues.User;
+            return post;
           });
+
+          res.json({ brew, posts });
         });
       });
     });
