@@ -43,28 +43,19 @@ const TopNav = React.createClass({
     return (
       <div>
         <div>
-          <div className='ui top fixed menu'>
+          <div className='ui top menu'>
             <div className='left brown menu'>
-              <Link to='/' className='brown inverted item'>
+              <Link to='/' className='ui green inverted item header'>
                 [ postbrew ]
               </Link>
             </div>
-              {/*
-                <div className='vertically fitted item'>
-                  <img src='http://static1.squarespace.com/static/5596a865e4b01a6af589a2cb/t/55b3956de4b00b13a952dadc/1437832557884/coffeepic.png' alt='postbrew'/>
-                </div>
-              */}
+
             <div className='right menu'>
-              <div className='brown item'>
-                <div className='ui input tiny'>
-                  <input type='text' placeholder='Search' />
-                </div>
-              </div>
               {this.renderAuthButton()}
             </div>
           </div>
         </div>
-        <div style={{marginTop: '49'}} className='ui small blue secondary inverted menu'>
+        <div style={{marginTop: '1', paddingTop: '0'}} className='ui small blue secondary inverted menu'>
           <Link to='/b/javascript' className='active item'>
             javascript
           </Link>
