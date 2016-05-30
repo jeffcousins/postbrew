@@ -3,10 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 const { object, string, bool } = React.PropTypes;
 
-// TODO: may only be a functional component
-// instead of mapping redux state to props, pass them in from
-// BrewContent component
-
 const BrewHeader = React.createClass({
   propTypes: {
     brewContent: object,
@@ -17,7 +13,7 @@ const BrewHeader = React.createClass({
     if (this.props.isSignedIn) {
       return (
         <Link to={`/b/${this.props.brewContent.brew_name}/submit`}>
-          <button className='tiny ui compact black button'>
+          <button className='mini ui compact green button'>
             + Submit a post
           </button>
         </Link>
