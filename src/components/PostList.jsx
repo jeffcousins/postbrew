@@ -10,18 +10,13 @@ const PostList = React.createClass({
     posts: React.PropTypes.array,
     showThread: React.PropTypes.func
   },
-  componentWillMount () {
-    console.log('Inside componentWillMount in PostList component');
-    console.log('this.props is:');
-    console.log(this.props);
-  },
   renderPosts () {
     if (!this.props.posts.length) {
       return;
     } else {
       return this.props.posts.map((post) => (
         <div key={post.id}>
-          <p>{post.title}</p>
+          <p><u>{post.title}</u> by {post.username}</p>
         </div>
       ));
     }
