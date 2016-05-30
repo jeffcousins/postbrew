@@ -28,7 +28,7 @@ const SignIn = React.createClass({
     const { handleSubmit, fields: { username, password } } = this.props;
 
     return (
-      <div className='ui container compact'>
+      <div className='ui container'>
         <div className='ui attached message'>
           <div className='header'>
             Welcome back!

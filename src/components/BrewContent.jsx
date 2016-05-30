@@ -31,9 +31,8 @@ const BrewContent = React.createClass({
       );
     } else {
       return (
-        <div>
+        <div className='ui container'>
           <BrewHeader />
-          <hr />
           {this.props.children}
         </div>
       );

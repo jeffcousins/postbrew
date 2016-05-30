@@ -5,6 +5,11 @@ const { bool } = React.PropTypes;
 
 const $ = require('jquery');
 
+const brewBarStyle = {
+  marginTop: '1',
+  marginBottom: '10'
+};
+
 const TopNav = React.createClass({
   propTypes: {
     isSignedIn: bool
@@ -55,7 +60,7 @@ const TopNav = React.createClass({
             </div>
           </div>
         </div>
-        <div style={{marginTop: '1', paddingTop: '0'}} className='ui small blue secondary inverted menu'>
+        <div style={brewBarStyle} className='ui small blue secondary inverted menu'>
           <Link to='/b/javascript' className='active item'>
             javascript
           </Link>

@@ -33,8 +33,12 @@ const BrewHeader = React.createClass({
 
     return (
       <div className='ui tall stacked segment'>
-        <span className='ui header'>{title}</span>
-        <p>[ <Link to={`/b/${brew_name}`}>/b/{brew_name}</Link> ] - {description}</p>
+        <span className='ui large header'>{title}</span>
+        <p>[ <Link to={`/b/${brew_name}`}>
+          /b/{brew_name}</Link> ] - {description} -
+          <em> Created by <Link to={`/u/${username}`}>/u/{username}</Link>.
+          </em>
+        </p>
         {this.renderSubmitPostButton()}
       </div>
     );
