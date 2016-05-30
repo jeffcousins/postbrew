@@ -65,7 +65,6 @@ const brews = (app) => {
       }).then((brew) => {
         brew.dataValues.username = brew.dataValues.User.dataValues.username;
         delete brew.dataValues.User;
-        
         brew.getPosts({
           order: [['createdAt', 'DESC']],
           include: [

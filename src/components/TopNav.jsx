@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 const { bool } = React.PropTypes;
 
-const $ = require('jquery');
+// const $ = require('jquery');
 
 const brewBarStyle = {
   marginTop: '1',
