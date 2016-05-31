@@ -11,13 +11,17 @@ const PostList = React.createClass({
     showThread: React.PropTypes.func
   },
   renderPosts () {
+    if (!this.props.posts) {
+      return;
+    }
+
     if (!this.props.posts.length) {
       return;
-    } else {
-      return this.props.posts.map((post) => (
-        <PostItem key={post.id} data={post} />
-      ));
     }
+
+    return this.props.posts.map((post) => (
+      <PostItem key={post.id} data={post} pathname={this.props.pathname}/>
+    ));
   },
   render () {
     return (
@@ -30,7 +34,8 @@ const PostList = React.createClass({
 
 function mapStateToProps (state) {
   return {
-    posts: state.brewContent.posts
+    posts: state.brewContent.posts,
+    pathname: state.brewContent.pathname
   };
 }
 
