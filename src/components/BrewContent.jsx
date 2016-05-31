@@ -35,17 +35,17 @@ const BrewContent = React.createClass({
     }
   },
   render () {
-    if (this.props.brewContent.pathname === '/') {
+    if (this.props.brewContent.notFound) {
+      return (
+        <div>
+          <h3>No results found for /b/{this.props.params.b}</h3>
+        </div>
+      );
+    } else if (this.props.brewContent.pathname === '/') {
       return (
         <div className='ui container'>
           <BrewHeader />
           <PostList />
-        </div>
-      );
-    } else if (!this.props.brewContent.title) {
-      return (
-        <div>
-          <h3>No results found for {this.props.params.b}</h3>
         </div>
       );
     } else {
