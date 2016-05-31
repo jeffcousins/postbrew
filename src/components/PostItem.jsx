@@ -40,6 +40,16 @@ const PostItem = (props) => {
     }
   }
 
+  function inBrewName () {
+    if (props.pathname === '/') {
+      return (
+        <span> in <Link to={`/${props.data.brew_name}`}
+          style={{'color': '#21BA45'}}>{props.data.brew_name}</Link>
+        </span>
+      );
+    }
+  }
+
   const timeAgo = moment(createdAt).startOf('hour').fromNow();
 
   return (
@@ -49,7 +59,7 @@ const PostItem = (props) => {
           {urlHandler(url, title, brew_name, id)}
         </h3>
         <div className='description'>
-          Submitted {timeAgo} by <Link to={`/u/${username}`}>{username}</Link>
+          Submitted {timeAgo} by <Link to={`/u/${username}`}>{username}</Link>{inBrewName()}
         </div>
         <div style={smallGrayStyle} className='extra'>
           [Comments]
