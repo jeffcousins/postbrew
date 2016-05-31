@@ -5,15 +5,18 @@ import {
   API_URL,
   IS_SIGNED_IN,
   IS_SIGNED_OUT,
-  SIGN_IN_ERROR
+  SIGN_IN_ERROR,
+  BREW_NOT_FOUND,
+  RECEIVED,
+  RECEIVED_ALL
 } from '../constants';
 
-export function showThread (activePost) {
-  return {
-    type: 'SHOW_THREAD',
-    activePost
-  };
-}
+// export function showThread (activePost) {
+//   return {
+//     type: 'SHOW_THREAD',
+//     activePost
+//   };
+// }
 
 export function fetchBrewContent (brewPath) {
   let brewId;
@@ -36,8 +39,16 @@ export function fetchBrewContent (brewPath) {
     }).catch(function (response) {
       console.log('error trying to GET data from server:');
       console.log(response);
+      dispatch(brewNotFound());
     });
   };
+}
+
+export function brewNotFound () {
+  console.log('brew not found action')
+  return {
+    type: BREW_NOT_FOUND
+  }
 }
 
 export function fetchAllContent () {
@@ -59,14 +70,14 @@ export function fetchAllContent () {
 
 export function receivedData (data) {
   return {
-    type: 'RECEIVED',
+    type: RECEIVED,
     payload: data
   };
 }
 
 export function receivedAll (data) {
   return {
-    type: 'RECEIVED_ALL',
+    type: RECEIVED_ALL,
     payload: data
   };
 }
@@ -151,6 +162,7 @@ export function userSignOut () {
     browserHistory.push('/');
   }, 5500);
 
-  return { type: IS_SIGNED_OUT };
+  return {
+    type: IS_SIGNED_OUT
+  };
 }
-
