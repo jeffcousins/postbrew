@@ -53,6 +53,25 @@ const brews = (app) => {
       }
     });
 
+  app.route('/api/all')
+    .get((req, res) => {
+      models.Post.findAll({
+        order: [['createdAt', 'DESC']],
+        include: [
+          { model: models.User }
+        ]
+      }).then((posts) => {
+        posts = posts.map((post) => {
+          post.dataValues.username = post.dataValues.User
+            .dataValues.username;
+          delete post.dataValues.User;
+          return post;
+        });
+
+        return res.json({ posts });
+      })
+    });
+
   app.route('/api/b/:brewId')
     .get((req, res) => {
       models.Brew.findOne({
