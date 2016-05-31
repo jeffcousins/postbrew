@@ -40,11 +40,35 @@ export function fetchBrewContent (brewPath) {
   };
 }
 
+export function fetchAllContent () {
+  const getUrl = `${API_URL}/all`;
+  return function (dispatch) {
+    return axios({
+      url: getUrl,
+      timeout: 3000,
+      method: 'get',
+      responseType: 'json'
+    }).then(function (response) {
+      dispatch(receivedData(response.data));
+    }).catch(function (response) {
+      console.log('error trying to GET data from server:');
+      console.log(response);
+    });
+  };
+}
+
 export function receivedData (data) {
   return {
     type: 'RECEIVED',
     payload: data
   };
+}
+
+export function receivedAll (data) {
+  return {
+    type: 'RECEIVED_ALL',
+    payload: data
+  }
 }
 
 export function createBrew (formProps) {

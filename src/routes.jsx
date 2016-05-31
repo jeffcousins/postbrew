@@ -16,6 +16,7 @@ import PostList from './components/PostList';
 
 const createRoutes = (props) => (
   <Route path='/' component={App} >
+    <IndexRoute component={BrewContent} />
     <Route path='b/:b' component={BrewContent}>
       <IndexRoute component={PostList} />
       <Route path='submit' component={ReqAuth(SubmitPost)} />
