@@ -2,7 +2,7 @@ import passport from 'passport';
 import { Strategy, ExtractJwt } from 'passport-jwt';
 import LocalStrategy from 'passport-local';
 import models from '../models';
-import { secret } from '../../config';
+import { secret } from './config';
 
 const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromHeader('authorization'),

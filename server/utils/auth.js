@@ -1,6 +1,6 @@
 import models from '../models';
 import jwt from 'jwt-simple';
-import { secret } from '../../config';
+import { secret } from './config';
 
 const auth = {};
 
