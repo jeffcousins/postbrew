@@ -63,6 +63,10 @@ const brews = (app) => {
           { model: models.User }
         ]
       }).then((brew) => {
+        if (!brew) {
+          return res.status(404).json({brew: null, posts: []})
+        }
+
         brew.dataValues.username = brew.dataValues.User.dataValues.username;
         delete brew.dataValues.User;
         brew.getPosts({
@@ -79,7 +83,7 @@ const brews = (app) => {
             return post;
           });
 
-          res.json({ brew, posts });
+          return res.json({ brew, posts });
         });
       });
     });
