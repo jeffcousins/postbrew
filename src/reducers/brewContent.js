@@ -1,3 +1,5 @@
+import { BREW_NOT_FOUND } from '../constants';
+
 const INITIAL_STATE = {};
 
 export default function (state = INITIAL_STATE, action) {
@@ -15,9 +17,14 @@ export default function (state = INITIAL_STATE, action) {
     case 'RECEIVED_ALL':
       Object.assign(newState,
         state,
-        {
-          posts: action.payload.posts
-        }
+        { posts: action.payload.posts }
+      );
+      return newState;
+
+    case BREW_NOT_FOUND:
+      Object.assign(newState,
+        state,
+        { notFound: true }
       );
       return newState;
 
@@ -37,7 +44,11 @@ export default function (state = INITIAL_STATE, action) {
         };
       }
 
-      Object.assign(newState, state, rootState, action.payload);
+      Object.assign(newState,
+        state,
+        rootState,
+        { notFound: false },
+        action.payload);
       return newState;
   }
 
