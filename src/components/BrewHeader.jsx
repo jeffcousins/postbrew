@@ -28,16 +28,32 @@ const BrewHeader = React.createClass({
       );
     }
   },
+  renderBrewLink (brewName) {
+    if (brewName) {
+      return (
+        <span>[ <Link to={`/b/${brewName}`}>/b/{brewName}</Link> ] - </span>
+      );
+    }
+  },
+  renderCreatedBy (username) {
+    if (username) {
+      return (
+        <span> - <em> Created by <Link to={`/u/${username}`}>
+          {username}</Link>.</em>
+        </span>
+      );
+    }
+  },
   render () {
     const { title, description, brew_name, username } = this.props.brewContent;
 
     return (
       <div className='ui tall stacked segment'>
         <span className='ui large header'>{title}</span>
-        <p>[ <Link to={`/b/${brew_name}`}>
-          /b/{brew_name}</Link> ] - {description} -
-          <em> Created by <Link to={`/u/${username}`}>/u/{username}</Link>.
-          </em>
+        <p>
+          {this.renderBrewLink(brew_name)}
+          {description}
+          {this.renderCreatedBy(username)}
         </p>
         {this.renderSubmitPostButton()}
       </div>

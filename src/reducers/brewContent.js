@@ -31,10 +31,10 @@ export default function (state = INITIAL_STATE, action) {
           id: '',
           pathname: '/',
           title: '[ postbrew ]',
-          username: 'everyone',
+          username: '',
           createdAt: '',
           updatedAt: ''
-        }
+        };
       }
 
       Object.assign(newState, state, rootState, action.payload);
