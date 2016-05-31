@@ -1,20 +1,20 @@
 const INITIAL_STATE = {};
 
 export default function (state = INITIAL_STATE, action) {
-  if (action.type === 'RECEIVED') {
-    const newState = {};
-    Object.assign(newState,
-      state,
-      action.payload.brew,
-      { posts: action.payload.posts }
-    );
-    return newState;
-  }
+  const newState = {};
 
-  if (action.type === '@@router/LOCATION_CHANGE') {
-    const newState = {};
-    Object.assign(newState, state, action.payload);
-    return newState;
+  switch (action.type) {
+    case 'RECEIVED':
+      Object.assign(newState,
+        state,
+        action.payload.brew,
+        { posts: action.payload.posts }
+      );
+      return newState;
+
+    case '@@router/LOCATION_CHANGE':
+      Object.assign(newState, state, action.payload);
+      return newState;
   }
 
   return state;
