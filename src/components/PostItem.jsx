@@ -8,9 +8,12 @@ const smallGrayStyle = {
   'color': 'gray'
 };
 
+const content = {
+  'paddingTop': '15',
+  'paddingBottom': '8'
+};
+
 const PostItem = (props) => {
-  console.log('post item props')
-  console.log(props);
   const { title, username, createdAt, url, brew_name, id } = props.data;
 
   function urlHandler (providedUrl, title, brew_name, id) {
@@ -25,7 +28,7 @@ const PostItem = (props) => {
         providedUrl = `http://${providedUrl}`;
       }
 
-      let parsed = parseDomain(providedUrl);
+      const parsed = parseDomain(providedUrl);
 
       return (
         <div>
@@ -41,10 +44,10 @@ const PostItem = (props) => {
 
   return (
     <div className='item'>
-      <div className='content'>
-        <div className='header'>
+      <div className='content' style={content}>
+        <h3 className='header'>
           {urlHandler(url, title, brew_name, id)}
-        </div>
+        </h3>
         <div className='description'>
           Submitted {timeAgo} by <Link to={`/u/${username}`}>{username}</Link>
         </div>

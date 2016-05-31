@@ -72,7 +72,8 @@ export function submitPost (formProps) {
         authorization: localStorage.getItem('token')
       }
     }).then((response) => {
-      browserHistory.push(`/b/${formProps.brewName}/${response.data.postId}`);
+      // browserHistory.push(`/b/${formProps.brewName}/${response.data.postId}`);
+      browserHistory.push(`/b/${formProps.brewName}`);
     }).catch((response) => {
       dispatch(signInError(response.data.errorMessage));
     });
