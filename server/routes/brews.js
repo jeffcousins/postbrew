@@ -69,7 +69,7 @@ const brews = (app) => {
         });
 
         return res.json({ posts });
-      })
+      });
     });
 
   app.route('/api/b/:brewId')
@@ -83,7 +83,7 @@ const brews = (app) => {
         ]
       }).then((brew) => {
         if (!brew) {
-          return res.status(404).json({brew: null, posts: []})
+          return res.status(404).json({brew: null, posts: []});
         }
 
         brew.dataValues.username = brew.dataValues.User.dataValues.username;

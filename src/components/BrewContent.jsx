@@ -41,12 +41,12 @@ const BrewContent = React.createClass({
           <BrewHeader />
           <PostList />
         </div>
-      )
+      );
     } else if (!this.props.brewContent.title) {
       return (
         <div>
           <h3>No results found for {this.props.params.b}</h3>
-        </div>  
+        </div>
       );
     } else {
       return (

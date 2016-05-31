@@ -4,11 +4,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { showThread } from '../actions/index';
 
+const { object, array, func, string } = React.PropTypes;
+
 const PostList = React.createClass({
   propTypes: {
-    params: React.PropTypes.object,
-    posts: React.PropTypes.array,
-    showThread: React.PropTypes.func
+    params: object,
+    posts: array,
+    showThread: func,
+    pathname: string
   },
   renderPosts () {
     if (!this.props.posts) {

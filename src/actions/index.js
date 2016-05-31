@@ -68,7 +68,7 @@ export function receivedAll (data) {
   return {
     type: 'RECEIVED_ALL',
     payload: data
-  }
+  };
 }
 
 export function createBrew (formProps) {
