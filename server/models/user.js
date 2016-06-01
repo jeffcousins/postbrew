@@ -14,6 +14,7 @@ module.exports = function (sequelize, DataTypes) {
       associate: function (models) {
         User.hasMany(models.Post);
         User.hasMany(models.Brew);
+        User.hasMany(models.Comment);
       }
     },
     instanceMethods: {

@@ -11,6 +11,7 @@ module.exports = function (sequelize, DataTypes) {
       associate: function (models) {
         Post.belongsTo(models.Brew);
         Post.belongsTo(models.User);
+        Post.hasMany(models.Comment);
       }
     }
   });
