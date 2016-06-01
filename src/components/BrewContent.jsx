@@ -1,6 +1,7 @@
 import React from 'react';
 import BrewHeader from './BrewHeader';
 import PostList from './PostList';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchBrewContent, fetchAllContent } from '../actions/index';
@@ -33,6 +34,22 @@ const BrewContent = React.createClass({
       }
     }
   },
+  renderHeader () {
+    if (this.props.params.post !== undefined) {
+      return (
+        <div>
+          <h4>
+            <Link to={`/b/${this.props.params.b}`}>/b/{this.props.params.b}
+            </Link>
+          </h4>
+        </div>
+      );
+    } else {
+      return (
+        <BrewHeader />
+      );
+    }
+  },
   render () {
     const { brewContent, params, children } = this.props;
 
@@ -52,7 +69,7 @@ const BrewContent = React.createClass({
     } else {
       return (
         <div className='ui container'>
-          <BrewHeader />
+          {this.renderHeader()}
           {children}
         </div>
       );
