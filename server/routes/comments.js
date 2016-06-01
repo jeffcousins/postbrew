@@ -6,25 +6,20 @@ const requireAuth = passport.authenticate('jwt', { session: false });
 const comments = (app) => {
   app.route('/api/comments/submit')
     .post(requireAuth, (req, res) => {
-      const { userId, brewId, postId, content } = req.body;
-      let { parentId } = req.body;
+      const { UserId, BrewId, PostId, parentId, content } = req.body;
 
-      if (!userId || !brewId || !postId || !parentId || !content) {
+      if (!UserId || !BrewId || !PostId || !content) {
         return res.status(422).json({
           errorMessage: 'Missing required fields or must be signed in.'
         });
       }
 
-      if (parentId === -1) {
-        parentId = null;
-      }
-
       models.Comment.create({
-        UserId: userId,
-        BrewId: brewId,
-        PostId: postId,
+        UserId,
+        BrewId,
+        PostId,
         CommentId: parentId,
-        content: content,
+        content,
         kudos: 0
       }).then((comment) => {
         return res.json({

@@ -126,12 +126,12 @@ export function submitPost (formProps) {
   };
 }
 
-export function submitComment (userId, brewId, postId, parentId, content) {
+export function submitComment (UserId, BrewId, PostId, parentId, content) {
   const postUrl = `${API_URL}/comments/submit`;
   const body = {
-    userId,
-    brewId,
-    postId,
+    UserId,
+    BrewId,
+    PostId,
     parentId,
     content
   };
