@@ -15,17 +15,17 @@ import {
 export function fetchBrewContent (brewId) {
   const getUrl = `${API_URL}/b/${brewId}`;
 
-  return function (dispatch) {
+  return (dispatch) => {
     return axios({
       url: getUrl,
       timeout: 3000,
       method: 'get',
       responseType: 'json'
-    }).then(function (response) {
+    }).then((response) => {
       dispatch(receivedData(response.data));
-    }).catch(function (response) {
+    }).catch((response) => {
       console.log('error trying to GET data from server:');
-      console.log(response);
+      console.log(response.data);
       dispatch(brewNotFound());
     });
   };
@@ -39,17 +39,17 @@ export function brewNotFound () {
 
 export function fetchAllContent () {
   const getUrl = `${API_URL}/all`;
-  return function (dispatch) {
+  return (dispatch) => {
     return axios({
       url: getUrl,
       timeout: 3000,
       method: 'get',
       responseType: 'json'
-    }).then(function (response) {
+    }).then((response) => {
       dispatch(receivedData(response.data));
-    }).catch(function (response) {
+    }).catch((response) => {
       console.log('error trying to GET data from server:');
-      console.log(response);
+      console.log(response.data);
     });
   };
 }
@@ -57,15 +57,15 @@ export function fetchAllContent () {
 export function fetchPostContent (b, post) {
   const getUrl = `${API_URL}/${b}/comments/${post}`;
 
-  return function (dispatch) {
+  return (dispatch) => {
     return axios({
       url: getUrl,
       timeout: 3000,
       method: 'get',
       responseType: 'json'
-    }).then(function (response) {
+    }).then((response) => {
       dispatch(receivedPost(response.data));
-    }).catch(function (response) {
+    }).catch((response) => {
       console.log('error trying to GET post content from server:');
       console.log(response);
     });
@@ -147,7 +147,7 @@ export function submitComment (userId, brewId, postId, parentId, content) {
       console.log('ERROR trying to submit a comment:');
       console.log(response);
     });
-  }
+  };
 }
 
 export function userSignUp (formProps) {

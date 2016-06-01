@@ -32,6 +32,6 @@ const comments = (app) => {
         });
       });
     });
-}
+};
 
 export default comments;
