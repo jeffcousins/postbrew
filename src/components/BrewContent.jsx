@@ -8,6 +8,10 @@ import { fetchBrewContent, fetchAllContent } from '../actions/index';
 
 const { object, func } = React.PropTypes;
 
+const green = {
+  color: '#21BA45'
+};
+
 const BrewContent = React.createClass({
   propTypes: {
     params: object,
@@ -39,7 +43,8 @@ const BrewContent = React.createClass({
       return (
         <div>
           <h4>
-            <Link to={`/b/${this.props.params.b}`}>/b/{this.props.params.b}
+            <Link to={`/b/${this.props.params.b}`} style={green}>
+              /b/{this.props.params.b}
             </Link>
           </h4>
         </div>
