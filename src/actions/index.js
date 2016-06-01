@@ -12,13 +12,6 @@ import {
   POST_RECEIVED
 } from '../constants';
 
-// export function showThread (activePost) {
-//   return {
-//     type: 'SHOW_THREAD',
-//     activePost
-//   };
-// }
-
 export function fetchBrewContent (brewId) {
   const getUrl = `${API_URL}/b/${brewId}`;
 
@@ -131,6 +124,30 @@ export function submitPost (formProps) {
       dispatch(signInError(response.data.errorMessage));
     });
   };
+}
+
+export function submitComment (userId, brewId, postId, parentId, content) {
+  const postUrl = `${API_URL}/comments/submit`;
+  const body = {
+    userId,
+    brewId,
+    postId,
+    parentId,
+    content
+  };
+
+  return (dispatch) => {
+    axios.post(postUrl, body, {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    }).then((response) => {
+      console.log(response);
+    }).catch((response) => {
+      console.log('ERROR trying to submit a comment:');
+      console.log(response);
+    });
+  }
 }
 
 export function userSignUp (formProps) {
