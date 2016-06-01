@@ -36,8 +36,8 @@ const PostView = React.createClass({
       return;
     }
 
-    const { title } = this.props.postContent.post;
-    let url = this.props.postContent.url;
+    const title = this.props.postContent.post.title;
+    let url = this.props.postContent.post.url;
 
     if (url) {
       if (url.length > 30) {
@@ -74,11 +74,11 @@ const PostView = React.createClass({
     }
   },
   renderCommentBox () {
-    const { b, post } = this.props.params;
+    const { post } = this.props.postContent;
 
     if (this.props.isSignedIn) {
       return (
-        <CommentBox postId={Number(post)} parentId={-1} />
+        <CommentBox {...post} parentId={null} />
       );
     } else {
       return (
@@ -90,13 +90,29 @@ const PostView = React.createClass({
       );
     }
   },
+  renderCommentList () {
+    if (!this.props.postContent.comments) {
+      return;
+    }
+
+    if (this.props.postContent.comments.length) {
+      return (
+        <div>
+          <h3 className='ui dividing header'>Comments</h3>
+          <CommentList comments={this.props.postContent.comments} />
+        </div>
+      );
+    } else {
+      return <h3>No comments</h3>;
+    }
+  },
   render () {
     return (
       <div>
         {this.renderTitle()}
         {this.renderTextContent()}
         {this.renderCommentBox()}
-        <CommentList comments={this.props.postContent.comments} />
+        {this.renderCommentList()}
       </div>
     );
   }
