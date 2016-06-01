@@ -43,21 +43,22 @@ const SubmitPost = React.createClass({
         </div>
         <form className='ui inverted form attached fluid segment'
               onSubmit={handleSubmit(this.handleFormSubmit)}>
-          <div className='required field seven wide'>
+          <div className='required field eleven wide'>
             <label>Title</label>
             <input type='text' {...title} placeholder='wat' />
           </div>
           <div className='ui divider'></div>
-          <div className='field seven wide'>
+          <div className='field eleven wide'>
             <label>URL (optional)</label>
             <input type='text' {...url}
-                   placeholder='this.isoptional.com' />
+              placeholder='this.isoptional.com' />
           </div>
           <div className='ui divider'></div>
-          <div className='field seven wide'>
+          <div className='field eleven wide'>
             <label>Text (optional)</label>
-            <input type='text' {...content}
-                   placeholder='This is optional.' />
+            <textarea rows='5' {...content}
+              placeholder='This is optional.'>
+            </textarea>
           </div>
           <div className='ui divider'></div>
           <button className='ui button positive' type='submit'>Create</button>
