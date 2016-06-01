@@ -71,10 +71,29 @@ const posts = (app) => {
           return res.status(404).json({post: null, comments: []});
         }
 
-        post.dataValues.username = post.dataValues.User.dataValues.username;
-        delete post.dataValues.User;
+        models.Comment.findAll({
+          order: [['createdAt', 'DESC']],
+          where: {
+            PostId: req.params.postId,
+            CommentId: null
+          },
+          include: [
+            { model: models.User }
+          ]
+        }).then((comments) => {
+          if (!comments.length) {
+            return res.json({ post, comments: [] });
+          }
 
-        return res.json({ post });
+          comments = comments.map((comment) => {
+            comment.dataValues.username = comment.dataValues.User
+              .dataValues.username;
+            delete comment.dataValues.User;
+            return comment;
+          });
+
+          return res.json({ post, comments });
+        });
       });
     });
 };
