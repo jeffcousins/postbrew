@@ -8,7 +8,7 @@ export default function (state = INITIAL_STATE, action) {
     case POST_RECEIVED:
       Object.assign(newState,
         state,
-        action.payload.post
+        action.payload
       );
       return newState;
   }
