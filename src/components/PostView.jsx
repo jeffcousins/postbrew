@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
-const { object, func } = React.PropTypes;
+const { object, func, bool } = React.PropTypes;
 
 const smallGrayStyle = {
   'fontSize': '11',
@@ -18,7 +18,8 @@ const PostView = React.createClass({
     postContent: object,
     brewContent: object,
     params: object,
-    fetchPostContent: func
+    fetchPostContent: func,
+    isSignedIn: bool
   },
   componentDidMount () {
     const { b, post } = this.props.params;
@@ -61,11 +62,27 @@ const PostView = React.createClass({
       );
     }
   },
+  renderCommentButton () {
+    if (this.props.isSignedIn) {
+      return (
+        <div className='mini ui compact green button'>
+          + Comment
+        </div>
+      );
+    } else {
+      return (
+        <div className='mini ui compact button'>
+          Sign in to comment
+        </div>
+      );
+    }
+  },
   render () {
     return (
       <div>
         {this.renderTitle()}
         {this.renderTextContent()}
+        {this.renderCommentButton()}
       </div>
     );
   }
@@ -74,7 +91,8 @@ const PostView = React.createClass({
 function mapStateToProps (state) {
   return {
     postContent: state.postContent,
-    brewContent: state.brewContent
+    brewContent: state.brewContent,
+    isSignedIn: state.auth.isSignedIn
   };
 }
 
