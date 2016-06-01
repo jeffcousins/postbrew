@@ -33,6 +33,7 @@ app.use(passport.session());
 brews(app);
 users(app);
 posts(app);
+comments(app);
 
 app.use((req, res) => {
   match({ routes: createRoutes(), location: req.url },
