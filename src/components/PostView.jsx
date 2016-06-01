@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import CommentList from './CommentList';
 
 const { object, func, bool } = React.PropTypes;
 
@@ -83,6 +84,7 @@ const PostView = React.createClass({
         {this.renderTitle()}
         {this.renderTextContent()}
         {this.renderCommentButton()}
+        <CommentList />
       </div>
     );
   }
