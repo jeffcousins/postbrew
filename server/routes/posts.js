@@ -56,6 +56,27 @@ const posts = (app) => {
         });
       }
     });
+
+  app.route('/api/:brewId/comments/:postId')
+    .get((req, res) => {
+      models.Post.findOne({
+        where: {
+          id: req.params.postId
+        },
+        include: [
+          { model: models.User }
+        ]
+      }).then((post) => {
+        if (!post) {
+          return res.status(404).json({post: null, comments: []});
+        }
+
+        post.dataValues.username = post.dataValues.User.dataValues.username;
+        delete post.dataValues.User;
+
+        return res.json({ post });
+      });
+    });
 };
 
 export default posts;

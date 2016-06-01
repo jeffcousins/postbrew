@@ -19,7 +19,7 @@ const PostView = React.createClass({
   render () {
     return (
       <div>
-        PostView Component
+        <h2>{this.props.postContent.title}</h2>
       </div>
     );
   }
