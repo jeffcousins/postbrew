@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import CommentBox from './CommentBox';
 import CommentList from './CommentList';
 
 const { object, func, bool } = React.PropTypes;
@@ -63,18 +65,20 @@ const PostView = React.createClass({
       );
     }
   },
-  renderCommentButton () {
+  renderCommentBox () {
+    const { b, post } = this.props.params;
+
     if (this.props.isSignedIn) {
       return (
-        <div className='mini ui compact green button'>
-          + Comment
-        </div>
+        <CommentBox parentId={-1} b={b} postId={Number(post)} />
       );
     } else {
       return (
-        <div className='mini ui compact button'>
-          Sign in to comment
-        </div>
+        <Link to={`/signin`}>
+          <button className='mini ui compact button'>
+            Sign in to comment
+          </button>
+        </Link>
       );
     }
   },
@@ -83,7 +87,7 @@ const PostView = React.createClass({
       <div>
         {this.renderTitle()}
         {this.renderTextContent()}
-        {this.renderCommentButton()}
+        {this.renderCommentBox()}
         <CommentList />
       </div>
     );
