@@ -10,7 +10,12 @@ module.exports = function(sequelize, DataTypes) {
         Comment.belongsTo(models.User);
         Comment.belongsTo(models.Post);
         Comment.belongsTo(models.Comment);
-        Comment.hasMany(models.Comment);
+        Comment.hasMany(models.Comment, {
+          foreignKey: {
+            onDelete: 'CASCADE',
+            allowNull: true
+          }
+        });
       }
     }
   });
