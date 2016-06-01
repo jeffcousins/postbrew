@@ -8,7 +8,8 @@ import {
   SIGN_IN_ERROR,
   BREW_NOT_FOUND,
   RECEIVED,
-  RECEIVED_ALL
+  RECEIVED_ALL,
+  POST_RECEIVED
 } from '../constants';
 
 // export function showThread (activePost) {
@@ -57,6 +58,31 @@ export function fetchAllContent () {
       console.log('error trying to GET data from server:');
       console.log(response);
     });
+  };
+}
+
+export function fetchPostContent (b, post) {
+  const getUrl = `${API_URL}/${b}/comments/${post}`;
+
+  return function (dispatch) {
+    return axios({
+      url: getUrl,
+      timeout: 3000,
+      method: 'get',
+      responseType: 'json'
+    }).then(function (response) {
+      dispatch(receivedPost(response.data));
+    }).catch(function (response) {
+      console.log('error trying to GET post content from server:');
+      console.log(response);
+    });
+  };
+}
+
+export function receivedPost (data) {
+  return {
+    type: POST_RECEIVED,
+    payload: data
   };
 }
 

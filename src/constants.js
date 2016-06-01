@@ -6,3 +6,4 @@ export const LOCATION_CHANGE = '@@router/LOCATION_CHANGE';
 export const BREW_NOT_FOUND = 'BREW_NOT_FOUND';
 export const RECEIVED = 'RECEIVED';
 export const RECEIVED_ALL = 'RECEIVED_ALL';
+export const POST_RECEIVED = 'POST_RECEIVED';
