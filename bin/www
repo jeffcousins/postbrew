@@ -4,10 +4,11 @@
 import app from '../server';
 import models from '../server/models';
 
-app.set('port', process.env.PORT || 8080);
+// app.set('port', process.env.PORT || 8080);
 
 models.sequelize.sync().then(function () {
-  const server = app.listen(app.get('port'), function() {
-    console.log('Express server listening on port ' + server.address().port);
-  });
+  app.listen(process.env.PORT || 3000);
+  // const server = app.listen(app.get('port'), function() {
+  //   console.log('Express server listening on port ' + server.address().port);
+  // });
 });
