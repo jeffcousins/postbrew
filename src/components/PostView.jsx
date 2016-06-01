@@ -9,6 +9,10 @@ const smallGrayStyle = {
   'color': 'gray'
 };
 
+const textContent = {
+  'background': '#f8f8f8'
+};
+
 const PostView = React.createClass({
   propTypes: {
     postContent: object,
@@ -34,8 +38,8 @@ const PostView = React.createClass({
 
       return (
         <div>
-          <h2><a href={`${url}`}>
-            {title}</a><br /><span><a href={`${url}`} style={smallGrayStyle}>[ {url} ]</a></span>
+          <h2><a href={`${url}`}>{title}</a><br /><span>
+            <a href={`${url}`} style={smallGrayStyle}>[ {url} ]</a></span>
           </h2>
         </div>
       );
@@ -47,10 +51,21 @@ const PostView = React.createClass({
       );
     }
   },
+  renderTextContent () {
+    const { content } = this.props.postContent;
+    if (content) {
+      return (
+        <div className='ui padded segment' style={textContent}>
+          <p>{content}</p>
+        </div>
+      );
+    }
+  },
   render () {
     return (
       <div>
         {this.renderTitle()}
+        {this.renderTextContent()}
       </div>
     );
   }
