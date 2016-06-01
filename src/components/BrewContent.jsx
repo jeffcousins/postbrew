@@ -13,7 +13,6 @@ const BrewContent = React.createClass({
     fetchBrewContent: func,
     fetchAllContent: func,
     brewContent: object,
-    brewpath: string,
     children: React.PropTypes.element
   },
   componentDidMount () {
@@ -21,12 +20,12 @@ const BrewContent = React.createClass({
       if (this.props.brewContent.pathname === '/') {
         this.props.fetchAllContent();
       } else {
-        this.props.fetchBrewContent(this.props.brewContent.pathname);
+        this.props.fetchBrewContent(this.props.params.b);
       }
     }
   },
   componentWillReceiveProps (nextProps) {
-    if (nextProps.brewContent.pathname !== this.props.brewContent.pathname) {
+    if (this.props.params.b !== nextProps.params.b) {
       if (nextProps.brewContent.pathname === '/') {
         this.props.fetchAllContent();
       } else {
@@ -61,8 +60,7 @@ const BrewContent = React.createClass({
 
 function mapStateToProps (state) {
   return {
-    brewContent: state.brewContent,
-    brewpath: state.brewContent.pathname
+    brewContent: state.brewContent
   };
 }
 

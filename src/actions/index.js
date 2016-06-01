@@ -18,14 +18,7 @@ import {
 //   };
 // }
 
-export function fetchBrewContent (brewPath) {
-  let brewId;
-  if (brewPath[0] === '/') {
-    brewId = brewPath.slice(3);
-  } else {
-    brewId = brewPath;
-  }
-
+export function fetchBrewContent (brewId) {
   const getUrl = `${API_URL}/b/${brewId}`;
 
   return function (dispatch) {
