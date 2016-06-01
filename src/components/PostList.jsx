@@ -22,9 +22,11 @@ const PostList = React.createClass({
       return;
     }
 
-    return this.props.posts.map((post) => (
-      <PostItem key={post.id} data={post} pathname={this.props.pathname}/>
-    ));
+    return this.props.posts.map((post) => {
+      return (
+        <PostItem key={post.id} data={post} pathname={this.props.pathname}/>
+      );
+    });
   },
   render () {
     return (
