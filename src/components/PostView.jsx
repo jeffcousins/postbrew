@@ -70,7 +70,7 @@ const PostView = React.createClass({
 
     if (this.props.isSignedIn) {
       return (
-        <CommentBox parentId={-1} b={b} postId={Number(post)} />
+        <CommentBox postId={Number(post)} parentId={-1} />
       );
     } else {
       return (

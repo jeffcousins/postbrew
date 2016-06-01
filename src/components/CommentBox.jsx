@@ -18,10 +18,10 @@ const CommentBox = React.createClass({
   },
   handleSubmit (event) {
     event.preventDefault();
-    console.log(this.props);
-    const { b, postId, parentId, submitComment } = this.props;
+    const { submitComment, userId, postId, parentId } = this.props;
+    const brewId = this.props.brewContent.id;
 
-    submitComment(b, postId, this.state.text, parentId);
+    submitComment(userId, brewId, postId, parentId, this.state.text);
   },
   onInputChange (text) {
     this.setState({ text });
@@ -41,4 +41,11 @@ const CommentBox = React.createClass({
   }
 });
 
-export default connect(null, actions)(CommentBox);
+function mapStateToProps (state) {
+  return {
+    brewContent: state.brewContent,
+    userId: state.auth.userId
+  };
+}
+
+export default connect(mapStateToProps, actions)(CommentBox);
