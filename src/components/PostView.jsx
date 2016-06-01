@@ -32,7 +32,11 @@ const PostView = React.createClass({
     }
   },
   renderTitle () {
-    const { title } = this.props.postContent;
+    if (!this.props.postContent.post) {
+      return;
+    }
+
+    const { title } = this.props.postContent.post;
     let url = this.props.postContent.url;
 
     if (url) {
@@ -50,13 +54,17 @@ const PostView = React.createClass({
     } else {
       return (
         <div>
-          <h2>{this.props.postContent.title}</h2>
+          <h2>{title}</h2>
         </div>
       );
     }
   },
   renderTextContent () {
-    const { content } = this.props.postContent;
+    if (!this.props.postContent.post) {
+      return;
+    }
+
+    const { content } = this.props.postContent.post;
     if (content) {
       return (
         <div className='ui padded segment' style={textContent}>
@@ -88,7 +96,7 @@ const PostView = React.createClass({
         {this.renderTitle()}
         {this.renderTextContent()}
         {this.renderCommentBox()}
-        <CommentList />
+        <CommentList comments={this.props.postContent.comments} />
       </div>
     );
   }
