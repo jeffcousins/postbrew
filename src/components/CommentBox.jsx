@@ -7,9 +7,11 @@ const { string, number, func } = React.PropTypes;
 const CommentBox = React.createClass({
   propTypes: {
     b: string,
-    postId: number,
-    parentId: number,
-    submitComment: func
+    submitComment: func,
+    UserId: number,
+    BrewId: number,
+    id: number,
+    parentId: number
   },
   getInitialState () {
     return {
@@ -18,10 +20,11 @@ const CommentBox = React.createClass({
   },
   handleSubmit (event) {
     event.preventDefault();
-    const { submitComment, userId, postId, parentId } = this.props;
-    const brewId = this.props.brewContent.id;
+    const { submitComment, UserId, BrewId, id, parentId } = this.props;
 
-    submitComment(userId, brewId, postId, parentId, this.state.text);
+    // id is PostId.
+    // parentId will be null since it's a root comment
+    submitComment(UserId, BrewId, id, parentId, this.state.text);
   },
   onInputChange (text) {
     this.setState({ text });
