@@ -38,10 +38,9 @@ export function fetchBrewContent (brewId) {
 }
 
 export function brewNotFound () {
-  console.log('brew not found action')
   return {
     type: BREW_NOT_FOUND
-  }
+  };
 }
 
 export function fetchAllContent () {

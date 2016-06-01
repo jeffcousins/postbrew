@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchBrewContent, fetchAllContent } from '../actions/index';
 
-const { object, func, string } = React.PropTypes;
+const { object, func } = React.PropTypes;
 
 const BrewContent = React.createClass({
   propTypes: {
@@ -29,18 +29,20 @@ const BrewContent = React.createClass({
       if (nextProps.brewContent.pathname === '/') {
         this.props.fetchAllContent();
       } else {
-        this.props.fetchBrewContent(nextProps.brewContent.pathname);
+        this.props.fetchBrewContent(nextProps.params.b);
       }
     }
   },
   render () {
-    if (this.props.brewContent.notFound) {
+    const { brewContent, params, children } = this.props;
+
+    if (brewContent.notFound) {
       return (
         <div>
-          <h3>No results found for /b/{this.props.params.b}</h3>
+          <h3>No results found for /b/{params.b}</h3>
         </div>
       );
-    } else if (this.props.brewContent.pathname === '/') {
+    } else if (brewContent.pathname === '/') {
       return (
         <div className='ui container'>
           <BrewHeader />
@@ -51,7 +53,7 @@ const BrewContent = React.createClass({
       return (
         <div className='ui container'>
           <BrewHeader />
-          {this.props.children}
+          {children}
         </div>
       );
     }
