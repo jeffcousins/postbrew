@@ -20,7 +20,7 @@ const PostItem = (props) => {
     if (!providedUrl) {
       return (
         <div>
-          <Link to={`/b/${brew_name}/${id}`}>{title}</Link>
+          <Link to={`/b/${brew_name}/comments/${id}`}>{title}</Link>
         </div>
       );
     } else {
