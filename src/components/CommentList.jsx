@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import CommentItem from './CommentItem';
 
 const blue = {
   color: '#2185D0'
