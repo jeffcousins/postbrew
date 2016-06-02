@@ -55,7 +55,6 @@ const brews = (app) => {
 
   app.route('/api/topBrews')
     .get((req, res) => {
-      console.log('aosdihgoaisdhfoadsjioi haoishf')
       models.Brew.findAll({
         include: [
           { model: models.Post }

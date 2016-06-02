@@ -31,6 +31,21 @@ export function fetchTopBrews () {
   }
 }
 
+function receivedTopBrews (brewList) {
+  var brewNames = brewList.sort((a, b) => {
+    if (a.postCount < b.postCount) {
+      return 1;
+    } else {
+      return -1;
+    }
+  }).map((brew) => brew.brew_name);
+
+  return {
+    type: RECEIVED_TOP_BREWS,
+    payload: brewNames
+  };
+}
+
 export function fetchBrewContent (brewId) {
   const getUrl = `${API_URL}/b/${brewId}`;
 
