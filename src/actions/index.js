@@ -9,8 +9,27 @@ import {
   BREW_NOT_FOUND,
   RECEIVED,
   RECEIVED_ALL,
-  POST_RECEIVED
+  POST_RECEIVED,
+  RECEIVED_TOP_BREWS
 } from '../constants';
+
+export function fetchTopBrews () {
+  const getUrl = `${API_URL}/topBrews`;
+
+  return (dispatch) => {
+    return axios({
+      url: getUrl,
+      timeout: 3000,
+      method: 'get',
+      responseType: 'json'
+    }).then((response) => {
+      dispatch(receivedTopBrews(response.data));
+    }).catch((response) => {
+      console.log('error trying to GET top brews list from server:');
+      console.log(response.data);
+    })
+  }
+}
 
 export function fetchBrewContent (brewId) {
   const getUrl = `${API_URL}/b/${brewId}`;
