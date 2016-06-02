@@ -1,4 +1,4 @@
-export const API_URL = 'http://postbrew.herokuapp.com/api';
+export const API_URL = 'https://postbrew.herokuapp.com/api';
 export const IS_SIGNED_IN = 'IS_SIGNED_IN';
 export const IS_SIGNED_OUT = 'IS_SIGNED_OUT';
 export const SIGN_IN_ERROR = 'SIGN_IN_ERROR';
