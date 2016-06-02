@@ -10,6 +10,10 @@ const BrewHeader = React.createClass({
     isSignedIn: bool
   },
   renderSubmitPostButton () {
+    if (this.props.brewContent.pathname === '/') {
+      return;
+    }
+
     if (this.props.isSignedIn) {
       return (
         <Link to={`/b/${this.props.brewContent.brew_name}/submit`}>
