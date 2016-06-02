@@ -46,7 +46,11 @@ auth.signUp = (req, res, next) => {
         token: createToken(user),
         userId: user.dataValues.id
       });
+    }).catch((err) => {
+      res.json(err);
     });
+  }).catch((err) => {
+    res.json(err);
   });
 };
 

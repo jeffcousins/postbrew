@@ -4,7 +4,10 @@
     "password": "postgres",
     "database": "postbrew_dev",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": true
+    }
   },
   "test": {
     "username": "postgres",
@@ -14,10 +17,13 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": "postgres",
-    "password": "postgres",
-    "database": "postbrew_production",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "use_env_variable": "DATABASE_URL",
+    "dialect":"postgres",
+    "ssl":true,
+    "dialectOptions":{
+      "ssl": {
+        "require": true
+      }
+    }
   }
 }

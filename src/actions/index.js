@@ -161,7 +161,11 @@ export function userSignUp (formProps) {
         localStorage.setItem('userId', response.data.userId);
         browserHistory.push('/');
       }).catch((response) => {
-        dispatch(signInError(response.data.errorMessage));
+        console.log('error signing up.');
+        console.log(response);
+        if (response.data && response.data.errorMessage) {
+          dispatch(signInError(response.data.errorMessage));
+        }
       });
   };
 }
