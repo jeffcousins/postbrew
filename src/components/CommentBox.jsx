@@ -2,7 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
-const { string, number, func } = React.PropTypes;
+const { string, number, func, object } = React.PropTypes;
+
+const saveButtonStyle = {
+  marginTop: '4',
+  marginBottom: '8'
+};
 
 const CommentBox = React.createClass({
   propTypes: {
@@ -11,7 +16,8 @@ const CommentBox = React.createClass({
     UserId: number,
     BrewId: number,
     id: number,
-    parentId: number
+    parentId: number,
+    params: object
   },
   getInitialState () {
     return {
@@ -20,11 +26,11 @@ const CommentBox = React.createClass({
   },
   handleSubmit (event) {
     event.preventDefault();
-    const { submitComment, UserId, BrewId, id, parentId } = this.props;
+    const { submitComment, UserId, BrewId, id, parentId, b } = this.props;
 
     // id is PostId.
     // parentId will be null since it's a root comment
-    submitComment(UserId, BrewId, id, parentId, this.state.text);
+    submitComment(UserId, BrewId, id, parentId, this.state.text, b);
   },
   onInputChange (text) {
     this.setState({ text });
@@ -37,7 +43,7 @@ const CommentBox = React.createClass({
             rows='3'
             value={this.state.text}
             onChange={(event) => this.onInputChange(event.target.value)}/>
-          <button className='mini ui compact button'>Save</button>
+          <button style={saveButtonStyle} className='mini ui compact button'>Save</button>
         </div>
       </form>
     );

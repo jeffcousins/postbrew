@@ -16,7 +16,7 @@ const CommentItem = React.createClass({
   },
   render () {
     const { id, username, content, createdAt } = this.props;
-    const timeAgo = moment(createdAt).startOf('hour').fromNow();
+    const timeAgo = moment(createdAt).fromNow();
 
     return (
       <div className='comment'>

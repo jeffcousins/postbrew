@@ -102,6 +102,7 @@ export function createBrew (formProps) {
         authorization: localStorage.getItem('token')
       }
     }).then((response) => {
+      dispatch(fetchBrewContent(formProps.brewName));
       browserHistory.push(`/b/${formProps.brewName}`);
     }).catch((response) => {
       dispatch(signInError(response.data.errorMessage));
@@ -119,6 +120,7 @@ export function submitPost (formProps) {
       }
     }).then((response) => {
       // browserHistory.push(`/b/${formProps.brewName}/${response.data.postId}`);
+      dispatch(fetchBrewContent(formProps.brewName));
       browserHistory.push(`/b/${formProps.brewName}`);
     }).catch((response) => {
       dispatch(signInError(response.data.errorMessage));
@@ -126,7 +128,7 @@ export function submitPost (formProps) {
   };
 }
 
-export function submitComment (UserId, BrewId, PostId, parentId, content) {
+export function submitComment (UserId, BrewId, PostId, parentId, content, b) {
   const postUrl = `${API_URL}/comments/submit`;
   const body = {
     UserId,
@@ -142,7 +144,7 @@ export function submitComment (UserId, BrewId, PostId, parentId, content) {
         authorization: localStorage.getItem('token')
       }
     }).then((response) => {
-      console.log(response);
+      dispatch(fetchPostContent(b, PostId));
     }).catch((response) => {
       console.log('ERROR trying to submit a comment:');
       console.log(response);

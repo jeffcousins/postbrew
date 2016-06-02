@@ -50,7 +50,7 @@ const PostItem = (props) => {
     }
   }
 
-  const timeAgo = moment(createdAt).startOf('hour').fromNow();
+  const timeAgo = moment(createdAt).fromNow();
 
   return (
     <div className='item'>
@@ -61,8 +61,8 @@ const PostItem = (props) => {
         <div className='description'>
           Submitted {timeAgo} by <Link to={`/u/${username}`}>{username}</Link>{inBrewName()}
         </div>
-        <div style={smallGrayStyle} className='extra'>
-          [Comments]
+        <div className='extra'>
+          <Link to={`/b/${brew_name}/comments/${id}`} style={smallGrayStyle}>Comments</Link>
         </div>
       </div>
     </div>

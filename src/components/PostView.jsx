@@ -78,7 +78,7 @@ const PostView = React.createClass({
 
     if (this.props.isSignedIn) {
       return (
-        <CommentBox {...post} parentId={null} />
+        <CommentBox {...post} parentId={null} {...this.props.params} />
       );
     } else {
       return (
