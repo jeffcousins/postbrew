@@ -53,6 +53,24 @@ const brews = (app) => {
       }
     });
 
+  app.route('/api/topBrews')
+    .get((req, res) => {
+      console.log('aosdihgoaisdhfoadsjioi haoishf')
+      models.Brew.findAll({
+        include: [
+          { model: models.Post }
+        ]
+      }).then((brews) => {
+        brews = brews.map((brew) => {
+          brew.dataValues.postCount = brew.dataValues.Posts.length;
+          delete brew.dataValues.Posts;
+          return brew;
+        });
+
+        res.json(brews);
+      });
+    })
+
   app.route('/api/all')
     .get((req, res) => {
       models.Post.findAll({
