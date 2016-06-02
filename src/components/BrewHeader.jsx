@@ -9,8 +9,12 @@ const BrewHeader = React.createClass({
     brewPath: string,
     isSignedIn: bool
   },
-  renderSubmitPostButton () {
+  renderSubmitPostButton (brewName) {
     if (this.props.brewContent.pathname === '/') {
+      return;
+    }
+
+    if (!brewName) {
       return;
     }
 
@@ -59,7 +63,7 @@ const BrewHeader = React.createClass({
           {description}
           {this.renderCreatedBy(username)}
         </p>
-        {this.renderSubmitPostButton()}
+        {this.renderSubmitPostButton(brew_name)}
       </div>
     );
   }
