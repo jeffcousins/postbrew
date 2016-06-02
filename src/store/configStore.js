@@ -11,10 +11,10 @@ export default function configStore (initialState) {
     initialState,
     applyMiddleware(
       thunkMiddleware
-    ),
-    compose(
-      typeof window === 'object' && window.devToolsExtension !== 'undefined'
-        ? window.devToolsExtension() : (f) => f
     )
+    // compose(
+    //   typeof window === 'object' && window.devToolsExtension !== 'undefined'
+    //     ? window.devToolsExtension() : (f) => f
+    // )
   );
 }
