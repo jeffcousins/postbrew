@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-const { bool } = React.PropTypes;
+import * as actions from '../actions';
+
+const { bool, array } = React.PropTypes;
 
 // const $ = require('jquery');
 
@@ -12,19 +14,28 @@ const brewBarStyle = {
 
 const TopNav = React.createClass({
   propTypes: {
-    isSignedIn: bool
+    isSignedIn: bool,
+    topBrews: array
   },
-  // componentDidMount () {
-  //   if (process.env.BROWSER) {
-  //     $('.brewmenu')
-  //       .on('click', '.item', function () {
-  //         $(this)
-  //           .addClass('active')
-  //           .siblings('.item')
-  //           .removeClass('active');
-  //       });
-  //   }
-  // },
+  componentDidMount () {
+    this.props.fetchTopBrews();
+  },
+  renderBrewItems () {
+    return (
+      <div style={brewBarStyle} className='ui small blue secondary inverted menu brewmenu'>
+        <Link to='/brews/create' className='item'>
+          [ create ]
+        </Link>
+        {this.props.topBrews.map((brew) => {
+          return (
+            <Link key={brew} to={`/b/${brew}`} className='item'>
+              {brew}
+            </Link>
+          );
+        })}
+      </div>
+    );
+  },
   renderAuthButton () {
     if (this.props.isSignedIn) {
       return (
@@ -45,6 +56,10 @@ const TopNav = React.createClass({
     }
   },
   render () {
+    if (!this.props.topBrews.length) {
+      return <div></div>;
+    }
+
     return (
       <div>
         <div>
@@ -60,47 +75,7 @@ const TopNav = React.createClass({
             </div>
           </div>
         </div>
-        <div style={brewBarStyle} className='ui small blue secondary inverted menu brewmenu'>
-          <Link to='/b/javascript' className='item'>
-            javascript
-          </Link>
-          <Link to='/b/es6' className='item'>
-            es6
-          </Link>
-          <Link to='/b/react' className='item'>
-            react
-          </Link>
-          <Link to='/b/redux' className='item'>
-            redux
-          </Link>
-          <Link to='/b/node' className='item'>
-            node
-          </Link>
-          <Link to='/b/express' className='item'>
-            express
-          </Link>
-          <Link to='/b/postgresql' className='item'>
-            postgresql
-          </Link>
-          <Link to='/b/sequelize' className='item'>
-            sequelize
-          </Link>
-          <Link to='/b/webpack' className='item'>
-            webpack
-          </Link>
-          <Link to='/b/mocha' className='item'>
-            mocha
-          </Link>
-          <Link to='/b/babel' className='item'>
-            babel
-          </Link>
-          <Link to='/b/semanticui' className='item'>
-            semantic ui
-          </Link>
-          <Link to='/brews/create' className='item'>
-            [ create ]
-          </Link>
-        </div>
+        {this.renderBrewItems()}
       </div>
     );
   }
@@ -108,8 +83,9 @@ const TopNav = React.createClass({
 
 function mapStateToProps (state) {
   return {
-    isSignedIn: state.auth.isSignedIn
+    isSignedIn: state.auth.isSignedIn,
+    topBrews: state.topBrews
   };
 }
 
-export default connect(mapStateToProps)(TopNav);
+export default connect(mapStateToProps, actions)(TopNav);
