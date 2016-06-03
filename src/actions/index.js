@@ -50,18 +50,22 @@ export function fetchBrewContent (brewId) {
   const getUrl = `${API_URL}/b/${brewId}`;
 
   return (dispatch) => {
-    return axios({
-      url: getUrl,
-      timeout: 3000,
-      method: 'get',
-      responseType: 'json'
-    }).then((response) => {
-      dispatch(receivedData(response.data));
-    }).catch((response) => {
-      console.log('error trying to GET data from server:');
-      console.log(response.data);
-      dispatch(brewNotFound());
-    });
+    if (!brewId) {
+      dispatch(fetchAllContent());
+    } else {
+      return axios({
+        url: getUrl,
+        timeout: 3000,
+        method: 'get',
+        responseType: 'json'
+      }).then((response) => {
+        dispatch(receivedData(response.data));
+      }).catch((response) => {
+        console.log('error trying to GET data from server:');
+        console.log(response.data);
+        dispatch(brewNotFound());
+      });
+    }
   };
 }
 
