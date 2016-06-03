@@ -140,6 +140,7 @@ export function createBrew (formProps) {
         authorization: localStorage.getItem('token')
       }
     }).then((response) => {
+      dispatch(fetchTopBrews());
       dispatch(fetchBrewContent(formProps.brewName));
       browserHistory.push(`/b/${formProps.brewName}`);
     }).catch((response) => {
