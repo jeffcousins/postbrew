@@ -10,7 +10,8 @@ import {
   RECEIVED,
   RECEIVED_ALL,
   POST_RECEIVED,
-  RECEIVED_TOP_BREWS
+  RECEIVED_TOP_BREWS,
+  RESET_BREW
 } from '../constants';
 
 export function fetchTopBrews () {
@@ -27,8 +28,8 @@ export function fetchTopBrews () {
     }).catch((response) => {
       console.log('error trying to GET top brews list from server:');
       console.log(response.data);
-    })
-  }
+    });
+  };
 }
 
 function receivedTopBrews (brewList) {
@@ -62,7 +63,7 @@ export function fetchBrewContent (brewId) {
         dispatch(receivedData(response.data));
       }).catch((response) => {
         console.log('error trying to GET data from server:');
-        console.log(response.data);
+        console.log(response.data.errorMessage);
         dispatch(brewNotFound());
       });
     }
@@ -75,6 +76,14 @@ export function brewNotFound () {
   };
 }
 
+const rootBrew = {
+  title: '[ postbrew ]',
+  description: 'All posts.',
+  pathname: '/',
+  brew_name: '',
+  username: ''
+};
+
 export function fetchAllContent () {
   const getUrl = `${API_URL}/all`;
   return (dispatch) => {
@@ -84,6 +93,7 @@ export function fetchAllContent () {
       method: 'get',
       responseType: 'json'
     }).then((response) => {
+      response.data.brew = rootBrew;
       dispatch(receivedData(response.data));
     }).catch((response) => {
       console.log('error trying to GET data from server:');
@@ -107,6 +117,12 @@ export function fetchPostContent (b, post) {
       console.log('error trying to GET post content from server:');
       console.log(response);
     });
+  };
+}
+
+export function resetBrew () {
+  return {
+    type: RESET_BREW
   };
 }
 

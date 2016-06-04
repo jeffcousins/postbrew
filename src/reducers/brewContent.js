@@ -1,12 +1,23 @@
-import { BREW_NOT_FOUND } from '../constants';
+import {
+  RECEIVED,
+  RECEIVED_ALL,
+  BREW_NOT_FOUND,
+  RESET_BREW
+} from '../constants';
 
-const INITIAL_STATE = {};
+const INITIAL_STATE = {
+  description: '',
+  title: '',
+  brew_name: '',
+  pathname: '',
+  username: ''
+};
 
 export default function (state = INITIAL_STATE, action) {
   const newState = {};
 
   switch (action.type) {
-    case 'RECEIVED':
+    case RECEIVED:
       Object.assign(newState,
         state,
         action.payload.brew,
@@ -14,7 +25,7 @@ export default function (state = INITIAL_STATE, action) {
       );
       return newState;
 
-    case 'RECEIVED_ALL':
+    case RECEIVED_ALL:
       Object.assign(newState,
         state,
         { posts: action.payload.posts }
@@ -28,27 +39,8 @@ export default function (state = INITIAL_STATE, action) {
       );
       return newState;
 
-    case '@@router/LOCATION_CHANGE':
-      let rootState = {};
-      if (action.payload.pathname === '/') {
-        rootState = {
-          UserId: '',
-          brew_name: '',
-          description: 'All posts.',
-          id: '',
-          pathname: '/',
-          title: '[ postbrew ]',
-          username: '',
-          createdAt: '',
-          updatedAt: ''
-        };
-      }
-
-      Object.assign(newState,
-        state,
-        rootState,
-        { notFound: false },
-        action.payload);
+    case RESET_BREW:
+      Object.assign(newState, INITIAL_STATE);
       return newState;
   }
 
