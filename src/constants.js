@@ -8,3 +8,4 @@ export const RECEIVED = 'RECEIVED';
 export const RECEIVED_ALL = 'RECEIVED_ALL';
 export const POST_RECEIVED = 'POST_RECEIVED';
 export const RECEIVED_TOP_BREWS = 'RECEIVED_TOP_BREWS';
+export const RESET_BREW = 'RESET_BREW';
