@@ -3,9 +3,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
-const { bool, array } = React.PropTypes;
-
-// const $ = require('jquery');
+const { bool, array, func } = React.PropTypes;
 
 const brewBarStyle = {
   marginTop: '1',
@@ -15,7 +13,8 @@ const brewBarStyle = {
 const TopNav = React.createClass({
   propTypes: {
     isSignedIn: bool,
-    topBrews: array
+    topBrews: array,
+    fetchTopBrews: func
   },
   componentDidMount () {
     this.props.fetchTopBrews();
