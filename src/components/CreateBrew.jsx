@@ -11,10 +11,14 @@ const CreateBrew = React.createClass({
     handleSubmit: func,
     createBrew: func,
     errorMessage: string,
-    userId: number
+    userId: number,
+    resetBrew: func
   },
   getInitialState: function () {
     return {brewNameInput: ''};
+  },
+  componentDidMount: function () {
+    this.props.resetBrew();
   },
   handleFormSubmit (formProps) {
     formProps.userId = this.props.userId;

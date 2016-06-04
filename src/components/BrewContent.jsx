@@ -31,11 +31,7 @@ const BrewContent = React.createClass({
   },
   componentWillReceiveProps (nextProps) {
     if (this.props.params.b !== nextProps.params.b) {
-      if (nextProps.brewContent.pathname === '/') {
-        this.props.fetchAllContent();
-      } else {
-        this.props.fetchBrewContent(nextProps.params.b);
-      }
+      this.props.fetchBrewContent(nextProps.params.b);
     }
   },
   renderHeader () {
@@ -64,7 +60,9 @@ const BrewContent = React.createClass({
           <h3>No results found for /b/{params.b}</h3>
         </div>
       );
-    } else if (brewContent.pathname === '/') {
+    } else if (!brewContent.title) {
+      return <div></div>;
+    } else if (brewContent.title === '[ postbrew ]') {
       return (
         <div className='ui container'>
           <BrewHeader />

@@ -10,7 +10,7 @@ const BrewHeader = React.createClass({
     isSignedIn: bool
   },
   renderSubmitPostButton (brewName) {
-    if (this.props.brewContent.pathname === '/') {
+    if (this.props.brewContent.title === '[ postbrew ]') {
       return;
     }
 
