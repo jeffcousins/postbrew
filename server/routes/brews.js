@@ -68,7 +68,7 @@ const brews = (app) => {
 
         res.json(brews);
       });
-    })
+    });
 
   app.route('/api/all')
     .get((req, res) => {
@@ -100,7 +100,11 @@ const brews = (app) => {
         ]
       }).then((brew) => {
         if (!brew) {
-          return res.status(404).json({brew: null, posts: []});
+          return res.status(404).json({
+            brew: null,
+            posts: [],
+            errorMessage: `${req.params.brewId} not found.`
+          });
         }
 
         brew.dataValues.username = brew.dataValues.User.dataValues.username;
