@@ -8,7 +8,7 @@ import CommentList from './CommentList';
 const { object, func, bool } = React.PropTypes;
 
 const smallGrayStyle = {
-  'fontSize': '11',
+  'fontSize': 11,
   'color': 'gray'
 };
 

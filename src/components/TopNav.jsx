@@ -6,8 +6,8 @@ import * as actions from '../actions';
 const { bool, array, func } = React.PropTypes;
 
 const brewBarStyle = {
-  marginTop: '1',
-  marginBottom: '10'
+  marginTop: 1,
+  marginBottom: 10
 };
 
 const TopNav = React.createClass({

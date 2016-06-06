@@ -4,13 +4,13 @@ import moment from 'moment';
 import parseDomain from 'parse-domain';
 
 const smallGrayStyle = {
-  'fontSize': '11',
+  'fontSize': 11,
   'color': 'gray'
 };
 
 const content = {
-  'paddingTop': '15',
-  'paddingBottom': '8'
+  'paddingTop': 15,
+  'paddingBottom': 8
 };
 
 const PostItem = (props) => {
