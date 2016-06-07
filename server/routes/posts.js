@@ -72,6 +72,7 @@ const posts = (app) => {
         }
 
         models.Comment.findAll({
+          order: [['createdAt', 'ASC']],
           where: {
             PostId: req.params.postId
           },
