@@ -95,15 +95,21 @@ const PostView = React.createClass({
     }
   },
   renderCommentList () {
-    if (!this.props.postContent.comments) {
+    const { postContent } = this.props;
+
+    if (!postContent.comments) {
       return;
     }
 
-    if (this.props.postContent.comments.length) {
+    if (postContent.comments.length) {
+      const rootComments = postContent.comments.filter((comment) => {
+        return comment.CommentId === null;
+      });
+
       return (
         <div>
           <h3 className='ui dividing header'>Comments</h3>
-          <CommentList comments={this.props.postContent.comments} />
+          <CommentList isRoot comments={rootComments} />
         </div>
       );
     } else {
