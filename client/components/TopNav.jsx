@@ -5,11 +5,6 @@ import * as actions from '../actions';
 
 const { bool, array, func } = React.PropTypes;
 
-const brewBarStyle = {
-  marginTop: 1,
-  marginBottom: 10
-};
-
 const TopNav = React.createClass({
   propTypes: {
     isSignedIn: bool,
@@ -20,6 +15,11 @@ const TopNav = React.createClass({
     this.props.fetchTopBrews();
   },
   renderBrewItems () {
+    const brewBarStyle = {
+      marginTop: 1,
+      marginBottom: 10
+    };
+
     return (
       <div style={brewBarStyle} className='ui small blue secondary inverted menu brewmenu'>
         <Link to='/brews/create' className='item'>
