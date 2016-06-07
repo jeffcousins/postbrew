@@ -72,10 +72,8 @@ const posts = (app) => {
         }
 
         models.Comment.findAll({
-          order: [['createdAt', 'DESC']],
           where: {
-            PostId: req.params.postId,
-            CommentId: null
+            PostId: req.params.postId
           },
           include: [
             { model: models.User }
