@@ -1,7 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../actions';
 import moment from 'moment';
+import { connect } from 'react-redux';
+import CommentList from './CommentList';
+import * as actions from '../actions';
 
 const { number, string, object, func } = React.PropTypes;
 
@@ -23,7 +24,9 @@ const CommentItem = React.createClass({
     createdAt: string,
     auth: object,
     brewContent: object,
-    submitComment: func
+    postContent: object,
+    submitComment: func,
+    CommentId: number
   },
   getInitialState () {
     return {
@@ -55,13 +58,11 @@ const CommentItem = React.createClass({
     this.setState({text: ''});
   },
   renderReply () {
-    console.log(this.state);
     if (!this.props.auth.isSignedIn) {
       return;
     }
 
     if (!this.state.open) {
-      console.log(this.props);
       return (
         <div className='actions'>
           <a className='reply' onClick={() => this.openSwitch()}>Reply</a>
@@ -81,8 +82,19 @@ const CommentItem = React.createClass({
       </div>
     );
   },
+  renderChildComments () {
+    const parentId = this.props.id;
+    const { comments } = this.props.postContent;
+    const childComments = comments.filter((comment) => {
+      return comment.CommentId === parentId;
+    });
+
+    if (childComments.length) {
+      return <CommentList comments={childComments} />;
+    }
+  },
   render () {
-    const { id, username, content, createdAt } = this.props;
+    const { username, content, createdAt } = this.props;
     const timeAgo = moment(createdAt).fromNow();
 
     return (
@@ -96,6 +108,7 @@ const CommentItem = React.createClass({
             {content}
           </div>
           {this.renderReply()}
+          {this.renderChildComments()}
         </div>
       </div>
     );
@@ -105,7 +118,8 @@ const CommentItem = React.createClass({
 function mapStateToProps (state) {
   return {
     auth: state.auth,
-    brewContent: state.brewContent
+    brewContent: state.brewContent,
+    postContent: state.postContent
   };
 }
 
