@@ -16,6 +16,10 @@ const textContent = {
   'background': '#f8f8f8'
 };
 
+const signInComment = {
+  marginBottom: 8
+};
+
 const PostView = React.createClass({
   propTypes: {
     postContent: object,
@@ -83,7 +87,7 @@ const PostView = React.createClass({
     } else {
       return (
         <Link to={`/signin`}>
-          <button className='mini ui compact button'>
+          <button className='mini ui compact button' style={signInComment}>
             Sign in to comment
           </button>
         </Link>

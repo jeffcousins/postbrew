@@ -5,8 +5,8 @@ import * as actions from '../actions';
 const { string, number, func, object } = React.PropTypes;
 
 const saveButtonStyle = {
-  marginTop: '4',
-  marginBottom: '8'
+  marginTop: 4,
+  marginBottom: 8
 };
 
 const CommentBox = React.createClass({
