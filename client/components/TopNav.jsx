@@ -14,6 +14,15 @@ const TopNav = React.createClass({
   componentDidMount () {
     this.props.fetchTopBrews();
   },
+  renderCreateBrewButton () {
+    if (this.props.isSignedIn) {
+      return (
+        <Link to='/brews/create' className='item'>
+          [ create ]
+        </Link>
+      );
+    }
+  },
   renderBrewItems () {
     const brewBarStyle = {
       marginTop: 1,
@@ -22,9 +31,7 @@ const TopNav = React.createClass({
 
     return (
       <div style={brewBarStyle} className='ui small blue secondary inverted menu brewmenu'>
-        <Link to='/brews/create' className='item'>
-          [ create ]
-        </Link>
+        {this.renderCreateBrewButton()}
         {this.props.topBrews.map((brew) => {
           return (
             <Link key={brew} to={`/b/${brew}`} className='item'>
