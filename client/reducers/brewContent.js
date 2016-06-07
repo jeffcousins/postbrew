@@ -21,14 +21,14 @@ export default function (state = INITIAL_STATE, action) {
       Object.assign(newState,
         state,
         action.payload.brew,
-        { posts: action.payload.posts }
+        { posts: action.payload.posts, notFound: false }
       );
       return newState;
 
     case RECEIVED_ALL:
       Object.assign(newState,
         state,
-        { posts: action.payload.posts }
+        { posts: action.payload.posts, notFound: false }
       );
       return newState;
 
