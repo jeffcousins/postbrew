@@ -58,6 +58,10 @@ const CommentItem = React.createClass({
     this.setState({text: ''});
   },
   renderReply () {
+    const fieldStyle = {
+      marginBottom: 5
+    };
+
     if (!this.props.auth.isSignedIn) {
       return;
     }
@@ -71,14 +75,17 @@ const CommentItem = React.createClass({
     }
 
     return (
-      <div className='actions'>
-        <textarea
-          rows='2'
-          value={this.state.text}
-          onChange={(event) => this.onInputChange(event.target.value)}/>
-        <br />
-        <a style={green} onClick={() => this.onSave()}><b>SAVE</b></a>
-        <a className='reply' onClick={() => this.openSwitch()}>cancel</a>
+      <div className='ui form'>
+        <div className='field nine wide' style={fieldStyle}>
+          <textarea
+            rows='2'
+            value={this.state.text}
+            onChange={(event) => this.onInputChange(event.target.value)}/>
+        </div>
+        <div className='actions'>
+          <a style={green} onClick={() => this.onSave()}><b>SAVE</b></a>
+          <a className='reply' onClick={() => this.openSwitch()}>cancel</a>
+        </div>
       </div>
     );
   },
