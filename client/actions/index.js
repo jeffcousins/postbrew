@@ -26,8 +26,8 @@ export function fetchTopBrews () {
     }).then((response) => {
       dispatch(receivedTopBrews(response.data));
     }).catch((response) => {
-      console.log('error trying to GET top brews list from server:');
-      console.log(response.data);
+      // console.log('error trying to GET top brews list from server:');
+      // console.log(response.data);
     });
   };
 }
@@ -62,8 +62,8 @@ export function fetchBrewContent (brewId) {
       }).then((response) => {
         dispatch(receivedData(response.data));
       }).catch((response) => {
-        console.log('error trying to GET data from server:');
-        console.log(response.data.errorMessage);
+        // console.log('error trying to GET data from server:');
+        // console.log(response.data.errorMessage);
         dispatch(brewNotFound());
       });
     }
@@ -96,8 +96,8 @@ export function fetchAllContent () {
       response.data.brew = rootBrew;
       dispatch(receivedData(response.data));
     }).catch((response) => {
-      console.log('error trying to GET data from server:');
-      console.log(response.data);
+      // console.log('error trying to GET data from server:');
+      // console.log(response.data);
     });
   };
 }
@@ -114,8 +114,8 @@ export function fetchPostContent (b, post) {
     }).then((response) => {
       dispatch(receivedPost(response.data));
     }).catch((response) => {
-      console.log('error trying to GET post content from server:');
-      console.log(response);
+      // console.log('error trying to GET post content from server:');
+      // console.log(response);
     });
   };
 }
@@ -201,8 +201,8 @@ export function submitComment (UserId, BrewId, PostId, parentId, content, b) {
     }).then((response) => {
       dispatch(fetchPostContent(b, PostId));
     }).catch((response) => {
-      console.log('ERROR trying to submit a comment:');
-      console.log(response);
+      // console.log('ERROR trying to submit a comment:');
+      // console.log(response);
     });
   };
 }
@@ -216,10 +216,11 @@ export function userSignUp (formProps) {
         dispatch({ type: IS_SIGNED_IN, payload: response.data.userId });
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('userId', response.data.userId);
+        localStorage.setItem('username', formProps.username);
         browserHistory.push('/');
       }).catch((response) => {
-        console.log('error signing up.');
-        console.log(response);
+        // console.log('error signing up.');
+        // console.log(response);
         if (response.data && response.data.errorMessage) {
           dispatch(signInError(response.data.errorMessage));
         }
@@ -233,9 +234,11 @@ export function userSignIn ({ username, password }) {
   return (dispatch) => {
     axios.post(postUrl, { username, password })
       .then((response) => {
-        dispatch({ type: IS_SIGNED_IN, payload: response.data.userId });
+        response.data.username = username;
+        dispatch({ type: IS_SIGNED_IN, payload: response.data });
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('userId', response.data.userId);
+        localStorage.setItem('username', username);
         browserHistory.push('/');
       })
       .catch(() => {
