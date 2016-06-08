@@ -10,8 +10,7 @@ export default function configStore (initialState) {
     rootReducer,
     initialState,
     applyMiddleware(
-      thunkMiddleware,
-      loggerMiddleware
+      thunkMiddleware
     )
     // compose(
     //   typeof window === 'object' && window.devToolsExtension !== 'undefined'
