@@ -1,6 +1,9 @@
 # PostBrew
 
-A Reddit-like social networking app.
+A Reddit-like social news and networking app.
+
+Check it out at [postbrew.herokuapp.com]
+(https://postbrew.herokuapp.com "MEOW MEOW MEOW MEOW MEOW MEOW MEOWWWWW").
 
 ## Install:
 
