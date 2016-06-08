@@ -13,7 +13,8 @@ export default function (state = { errorMessage: '', isSignedIn: false }, action
       Object.assign(newState, state, {
         errorMessage: '',
         isSignedIn: true,
-        userId: Number(action.payload)
+        userId: Number(action.payload.userId),
+        username: action.payload.username
       });
       return newState;
 
