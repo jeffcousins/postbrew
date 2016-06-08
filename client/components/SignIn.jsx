@@ -12,6 +12,9 @@ const SignIn = React.createClass({
     userSignIn: func,
     errorMessage: string
   },
+  componentDidMount: function () {
+    this.props.resetBrew();
+  },
   handleFormSubmit ({ username, password }) {
     this.props.userSignIn({ username, password });
   },

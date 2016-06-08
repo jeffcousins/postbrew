@@ -16,6 +16,9 @@ const SignUp = React.createClass({
     userSignUp: func,
     errorMessage: string
   },
+  componentDidMount: function () {
+    this.props.resetBrew();
+  },
   handleFormSubmit (formProps) {
     this.props.userSignUp(formProps);
   },
