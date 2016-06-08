@@ -3,11 +3,12 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
-const { bool, array, func } = React.PropTypes;
+const { bool, array, func, string } = React.PropTypes;
 
 const TopNav = React.createClass({
   propTypes: {
     isSignedIn: bool,
+    username: string,
     topBrews: array,
     fetchTopBrews: func
   },
@@ -30,7 +31,7 @@ const TopNav = React.createClass({
     };
 
     return (
-      <div style={brewBarStyle} className='ui small blue secondary inverted menu brewmenu'>
+      <div style={brewBarStyle} className='ui small blue secondary inverted menu'>
         {this.renderCreateBrewButton()}
         {this.props.topBrews.map((brew) => {
           return (
@@ -45,23 +46,39 @@ const TopNav = React.createClass({
   renderAuthButton () {
     if (this.props.isSignedIn) {
       return (
-        <div className='brown item'>
-          <Link to='/signout' className='ui button'>Sign Out</Link>
+        <div className='right menu'>
+          <div className='ui item'>
+            {this.props.username}
+          </div>
+          <div className='ui item'>
+            <Link to='/signout'> Sign Out</Link>
+          </div>
         </div>
       );
     } else {
       return (
-        <div className='vertically fitted item'>
-          <div className='ui small buttons'>
-            <Link to='/signin' className='ui button'>Sign In</Link>
-            <div className='or'></div>
-            <Link to='/signup' className='ui positive button'>Sign Up</Link>
+        <div className='right menu'>
+          <div className='ui vertically fitted item'>
+            <div className='ui small buttons'>
+              <Link to='/signin' className='ui button'>Sign In</Link>
+              <div className='or'></div>
+              <Link to='/signup' className='ui positive button'>Sign Up</Link>
+            </div>
           </div>
         </div>
       );
     }
   },
   render () {
+    const git = {
+      width: 20,
+      height: 20
+    };
+
+    const green = {
+      color: '#21BA45'
+    }
+
     if (!this.props.topBrews.length) {
       return <div></div>;
     }
@@ -69,16 +86,20 @@ const TopNav = React.createClass({
     return (
       <div>
         <div>
-          <div className='ui top menu'>
+          <div className='ui top secondary menu'>
             <div className='left menu'>
-              <Link to='/' className='ui green inverted item header'>
-                [ postbrew ]
-              </Link>
+              <div className='ui item header'>
+                <Link to='/' style={green}>
+                  [ postbrew ]
+                </Link>
+              </div>
+              <div className='ui item'>
+                <a href='http://github.com/jeffcousins/postbrew' style={git}>
+                  <img src='../../public/GitHub-Mark-32px.png' style={git}/>
+                </a>
+              </div>
             </div>
-
-            <div className='right menu'>
-              {this.renderAuthButton()}
-            </div>
+            {this.renderAuthButton()}
           </div>
         </div>
         {this.renderBrewItems()}
@@ -90,6 +111,7 @@ const TopNav = React.createClass({
 function mapStateToProps (state) {
   return {
     isSignedIn: state.auth.isSignedIn,
+    username: state.auth.username,
     topBrews: state.topBrews
   };
 }
