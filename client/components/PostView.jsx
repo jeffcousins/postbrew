@@ -40,18 +40,18 @@ const PostView = React.createClass({
       return;
     }
 
-    const title = this.props.postContent.post.title;
-    let url = this.props.postContent.post.url;
+    const { title, url } = this.props.postContent.post;
+    let short = url;
 
-    if (url) {
-      if (url.length > 30) {
-        url = url.slice(0, 30) + '...';
+    if (short) {
+      if (short.length > 30) {
+        short = short.slice(0, 30) + '...';
       }
 
       return (
         <div>
           <h2><a href={`${url}`}>{title}</a><br /><span>
-            <a href={`${url}`} style={smallGrayStyle}>[ {url} ]</a></span>
+            <a href={`${url}`} style={smallGrayStyle}>[ {short} ]</a></span>
           </h2>
         </div>
       );
