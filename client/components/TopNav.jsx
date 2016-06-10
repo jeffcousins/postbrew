@@ -95,7 +95,7 @@ const TopNav = React.createClass({
               </div>
               <div className='ui item'>
                 <a href='http://github.com/jeffcousins/postbrew' style={git}>
-                  <img src='../../public/GitHub-Mark-32px.png' style={git}/>
+                  <img src='https://postbrew.herokuapp.com/public/GitHub-Mark-32px.png' style={git}/>
                 </a>
               </div>
             </div>

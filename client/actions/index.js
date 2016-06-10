@@ -213,16 +213,11 @@ export function userSignUp (formProps) {
   return (dispatch) => {
     axios.post(postUrl, formProps)
       .then((response) => {
-        console.log('signup successful. formprops to get username string:')
-        console.log(formProps);
         response.data.username = formProps.username;
         dispatch({ type: IS_SIGNED_IN, payload: response.data });
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('userId', response.data.userId);
         localStorage.setItem('username', formProps.username);
-        console.log('userstorage is')
-        console.log(localStorage);
-        console.log('push to homepage plz');
         browserHistory.push('/');
       }).catch((response) => {
         // console.log('error signing up.');
