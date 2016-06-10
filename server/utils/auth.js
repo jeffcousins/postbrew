@@ -1,8 +1,16 @@
 import models from '../models';
 import jwt from 'jwt-simple';
-import { secret } from './config';
 
 const auth = {};
+let authConfig;
+
+try {
+  authConfig = require('./config');
+} catch (e) {
+  authConfig = {};
+}
+
+const SECRET = process.env.PROD_SECRET || authConfig.secret;
 
 const createToken = (user) => {
   const payload = {
@@ -10,7 +18,7 @@ const createToken = (user) => {
     iat: new Date().getTime()
   };
 
-  return jwt.encode(payload, secret);
+  return jwt.encode(payload, SECRET);
 };
 
 auth.signUp = (req, res, next) => {

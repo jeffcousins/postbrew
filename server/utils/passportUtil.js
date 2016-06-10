@@ -2,11 +2,20 @@ import passport from 'passport';
 import { Strategy, ExtractJwt } from 'passport-jwt';
 import LocalStrategy from 'passport-local';
 import models from '../models';
-import { secret } from './config';
+
+let authConfig;
+
+try {
+  authConfig = require('./config');
+} catch (e) {
+  authConfig = {};
+}
+
+const SECRET = process.env.PROD_SECRET || authConfig.secret;
 
 const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromHeader('authorization'),
-  secretOrKey: secret
+  secretOrKey: SECRET
 };
 
 const jwtLogin = new Strategy(jwtOptions, (payload, done) => {
