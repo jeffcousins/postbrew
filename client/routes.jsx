@@ -6,7 +6,6 @@ import UserDetail from './components/UserDetail';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
 import SignOut from './components/SignOut';
-import Thread from './components/Thread';
 import ReqAuth from './components/ReqAuth';
 import CreateBrew from './components/CreateBrew';
 import SubmitPost from './components/SubmitPost';
@@ -25,7 +24,6 @@ const createRoutes = (props) => (
     <Route path='signup' component={SignUp} />
     <Route path='signin' component={SignIn} />
     <Route path='signout' component={SignOut} />
-    <Route path='thread/:postId' component={Thread} />
     <Route path='brews/create' component={ReqAuth(CreateBrew)} />
     <Route path='*' component={BrewContent} />
   </Route>

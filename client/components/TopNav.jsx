@@ -77,7 +77,7 @@ const TopNav = React.createClass({
 
     const green = {
       color: '#21BA45'
-    }
+    };
 
     if (!this.props.topBrews.length) {
       return <div></div>;

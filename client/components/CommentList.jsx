@@ -1,7 +1,7 @@
 import React from 'react';
 import CommentItem from './CommentItem';
 
-const { array, bool, number } = React.PropTypes;
+const { array, bool } = React.PropTypes;
 
 const CommentList = React.createClass({
   propTypes: {

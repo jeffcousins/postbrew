@@ -41,7 +41,7 @@ const PostItem = (props) => {
   }
 
   function inBrewName () {
-    if (props.pathname === '/') {
+    if (props.showBrew) {
       return (
         <span> in <Link to={`/b/${props.data.brew_name}`}
           style={{'color': '#21BA45'}}>{props.data.brew_name}</Link>
@@ -69,11 +69,11 @@ const PostItem = (props) => {
   );
 };
 
-const { object, string } = React.PropTypes;
+const { object, bool } = React.PropTypes;
 
 PostItem.propTypes = {
   data: object,
-  pathname: string
+  showBrew: bool
 };
 
 export default PostItem;

@@ -1,17 +1,13 @@
 import React from 'react';
 import PostItem from './PostItem';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { showThread } from '../actions/index';
 
-const { object, array, func, string } = React.PropTypes;
+const { object, array } = React.PropTypes;
 
 const PostList = React.createClass({
   propTypes: {
     params: object,
-    posts: array,
-    showThread: func,
-    pathname: string
+    posts: array
   },
   renderPosts () {
     if (!this.props.posts) {
@@ -22,9 +18,15 @@ const PostList = React.createClass({
       return;
     }
 
+    let showBrew = true;
+
+    if (this.props.params && this.props.params.b) {
+      showBrew = false;
+    }
+
     return this.props.posts.map((post) => {
       return (
-        <PostItem key={post.id} data={post} pathname={this.props.pathname}/>
+        <PostItem key={post.id} data={post} showBrew={showBrew}/>
       );
     });
   },
@@ -39,13 +41,8 @@ const PostList = React.createClass({
 
 function mapStateToProps (state) {
   return {
-    posts: state.brewContent.posts,
-    pathname: state.brewContent.pathname
+    posts: state.brewContent.posts
   };
 }
 
-function mapDispatchToProps (dispatch) {
-  return bindActionCreators({ showThread: showThread }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(PostList);
+export default connect(mapStateToProps)(PostList);

@@ -10,7 +10,8 @@ const SignIn = React.createClass({
     fields: object,
     handleSubmit: func,
     userSignIn: func,
-    errorMessage: string
+    errorMessage: string,
+    resetBrew: func
   },
   componentDidMount: function () {
     this.props.resetBrew();
