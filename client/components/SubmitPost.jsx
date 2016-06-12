@@ -45,13 +45,13 @@ const SubmitPost = React.createClass({
               onSubmit={handleSubmit(this.handleFormSubmit)}>
           <div className='required field eleven wide'>
             <label>Title</label>
-            <input type='text' {...title} placeholder='wat' />
+            <input type='text' {...title} placeholder='Enter a title.' />
           </div>
           <div className='ui divider'></div>
           <div className='field eleven wide'>
             <label>URL (optional)</label>
-            <input type='text' {...url}
-              placeholder='this.isoptional.com' />
+            <input type='url' {...url}
+              placeholder='http://example.com' />
           </div>
           <div className='ui divider'></div>
           <div className='field eleven wide'>

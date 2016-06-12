@@ -24,10 +24,6 @@ const PostItem = (props) => {
         </div>
       );
     } else {
-      if (providedUrl.slice(0, 7) !== 'http://') {
-        providedUrl = `http://${providedUrl}`;
-      }
-
       const parsed = parseDomain(providedUrl);
 
       return (
