@@ -8,10 +8,6 @@ import { fetchBrewContent, fetchAllContent } from '../actions/index';
 
 const { object, func } = React.PropTypes;
 
-const green = {
-  color: '#21BA45'
-};
-
 const BrewContent = React.createClass({
   propTypes: {
     params: object,
@@ -36,6 +32,10 @@ const BrewContent = React.createClass({
   },
   renderHeader () {
     if (this.props.params.post !== undefined) {
+      const green = {
+        color: '#21BA45'
+      };
+
       return (
         <div>
           <h4>

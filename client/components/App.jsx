@@ -1,6 +1,5 @@
 import React from 'react';
 import TopNav from './TopNav';
-// const $ = require('jquery');
 
 const style = {
   'fontFamily': 'helvetica'
@@ -11,10 +10,16 @@ const App = React.createClass({
     children: React.PropTypes.element
   },
   render () {
+    const bottom = {
+      marginBottom: 20
+    };
+
     return (
       <div style={style}>
         <TopNav />
-        {this.props.children || <h1>postbrew</h1>}
+        <div style={bottom}>
+          {this.props.children || <h1>postbrew</h1>}
+        </div>
       </div>
     );
   }
