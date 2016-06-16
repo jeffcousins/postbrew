@@ -3,7 +3,7 @@
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 import React from 'react';
-import App from '../src/components/App';
+import App from '../client/components/App';
 
 describe('App Component', () => {
   it('should render default header', () => {

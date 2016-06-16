@@ -3,7 +3,7 @@
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 import React from 'react';
-import SignUp from '../src/components/SignUp';
+import SignUp from '../client/components/SignUp';
 
 describe('SignUp Component', () => {
   it('should render', () => {
